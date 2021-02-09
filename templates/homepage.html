@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Movie Ratings Home{% endblock %}
+
+
+{% block body %}
+<h1>Stock Y</h1>
+<head>
+   
+    <ul>
+      <li><a href="/stocks">View all stocks</a></li>
+      <li><a href="/favorites">View all favorites</a></li>
+    </ul>
+  
+    <h2>Create an Account</h2>
+    <form action="/users" method="POST">
+      <p>
+        Email <input type="text" name="email">
+      </p>
+  
+      <p>
+        Password <input type="password" name="password">
+      </p>
+      <p>
+        Date of Birth <input type="dob" name="dob">
+      </p>
+  
+      <p>
+        <input type="submit">
+      </p>
+    </form>
+  {% endblock %}
