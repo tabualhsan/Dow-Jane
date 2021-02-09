@@ -34,6 +34,8 @@ def register_user():
 
     email = request.form.get('email')
     password = request.form.get('password')
+    dob = 
+    
 
     user = crud.get_user_by_email(email)
     if user:
