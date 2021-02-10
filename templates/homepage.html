@@ -1,40 +1,54 @@
 {% extends 'base.html' %}
-{% block title %}Movie Ratings Home{% endblock %}
+{% block title %}Stock Y{% endblock %}
 
 
 {% block body %}
-<h1>Stock Y</h1>
+<h1> Stock Y</h1>
 <head>
+
    
-    <ul>
-      <li><a href="/stocks">View all stocks</a></li>
-      <li><a href="/favorites">View all favorites</a></li>
-    </ul>
+    
+       <h2>Already a User</h2>
+
+
+       <form id="login" action="login.php" method="post">
+        <p>  
+        Email <input type="text" autocomplete="username">
+        </p>
+        <p>
+        Password
+        <input type="password" autocomplete="current-password">
+        </p>
+        <input type="submit" value="Sign In">
+      </form>
   
-    <h2>Create an Account</h2>
-    <form action="/users" method="POST">
-      <p>
-        Email <input type="text" name="email">
-      </p>
-  
-      <p>
-        Password <input type="password" name="password">
-      </p>
-      <p>
-        Date of Birth <input type="dob" name="dob">
-      </p>
-      <p>
-        First name <input type="first_name" name="first_name">
-      </p>
-      <p>
-        Last name <input type="last_name" name="last_name">
-      </p>
-      <p>
-        Password <input type="password" name="password">
-      </p>
-  
-      <p>
-        <input type="submit">
-      </p>
-    </form>
-  {% endblock %}
+
+        <h2>Create an Account</h2>
+      </form>
+       <form action="/users" method="POST">
+       <p>
+           First name <input type="first_name" name="first_name">
+       </p>
+       <p>
+           Last name <input type="last_name" name="last_name">
+       </p>
+       <p>
+           Date of Birth <input type="dob" name="dob">
+       </p>
+         
+       <p>
+           Email <input type="text" name="email">
+       </p>
+   
+       <p>
+           Password <input type="password" name="password">
+       </p>
+       <p>
+           <input type="submit" value="Submit" >
+       </p>
+       </form>
+   
+       <script src="/static/stocks.js"></script>
+     {% endblock %}
+
+    

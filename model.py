@@ -39,7 +39,7 @@ class Stock(db.Model):
     sector = db.Column(db.String, nullable = False)
     exchange = db.Column(db.String, nullable = False)
     asset_type = db.Column(db.String, nullable = False)
-    women_lead = db.Column(db.Boolean, nullable = False)
+    women_lead = db.Column(db.Boolean, default = True )
 
 
     
@@ -75,7 +75,7 @@ class UserFavorite(db.Model):
     __tablename__ = 'userFavorites'
 
     favorite_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
-    is_favorite = db.Column(db.Boolean, nullable = True)
+    is_favorite = db.Column(db.Boolean, default = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     stock_id = db.Column(db.Integer, db.ForeignKey('stocks.stock_id'))
    

@@ -1,19 +1,25 @@
+"use strict";
+
 
 async function start() {
 
-    const response = await fetch("https://www.alphavantage.co/query?function=OVERVIEW&symbol=AAPL&apikey=3LOOI2SBODXLNS10")
-    const data = await response.json
-    createStockList(data.message)
 
-
+    const response = await fetch("https://www.alphavantage.co/query?function=OVERVIEW&symbol=AAPL&apikey=3LOOI2SBODXLNS10") 
+    const data = await response.json()
+    
 }
 
 
-function createStockList(stocks)
-    document.getElementById("Stock").innerHTML = `
-    ${Object.keys(stocks).map(function (stock) {
-        return `<option>${stock}</option>`
-    }).join('')}     
-    </select>
+
+start()
+
+function createStockList(stockList){
+    document.getElementById("stocks").innerHTML = `
+    <option> Choose a Stock</option>
+        ${Object.keys(stockList).map(function (stocks) {
+            return `<option>${stocks}</option>`
+        }).join('')}     
+        </select>
 
     `
+}

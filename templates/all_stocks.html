@@ -2,15 +2,28 @@
 {% block title %}All Stocks{% endblock %}
 
 {% block body %}
-  <h1>All Stocks</h1>
 
+<title>stocks2</title>
+  <h1>All Stocks</h1>
+  
+  <div class="Dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        <ul>
+            <li><a href="/stocks">View all stocks</a></li>
+            <li><a href="/favorites">View all favorites</a></li>
+        </ul>    
+    </div>
+   </div> 
   <ul>
     {% for stock in stocks %}
       <li>
         <a href="/stocks/{{ stock.stock_id }}">
-          {{ movie.title }}
+            {{stock.symbol}}
+          
         </a>
       </li>
     {% endfor %}
   </ul>
+  <script src="/static/stocks.js"></script>
 {% endblock %}
