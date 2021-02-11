@@ -62,3 +62,19 @@ body{
     text-decoration: none;
     display: block;
   }
+
+/* 
+
+  .like-button {
+    display: inline-block;
+    position: relative;
+    font-size: 32px;
+    cursor: pointer;
+    font-size: 3em;
+    color: #000;
+    content: '♥';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  } */
