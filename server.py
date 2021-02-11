@@ -102,9 +102,13 @@ def get_stock():
     url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}'
     res = requests.get(url)
     
-    print(res.text)
+    if symbol:
+        return res.json()
+    else:
+        return jsonify({"status": 'error','message': 'No information found about this stock' })
 
-    return jsonify(res.json())
+
+
    
 # favorite info================================================================================    
 

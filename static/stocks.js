@@ -8,9 +8,31 @@ function get_stock_info(evt){
     console.log(symbol);
 
 
-    $.get('/api/stock?symbol='+ symbol);
+    $.get('/api/stock?symbol='+ symbol, updateinfo);
 
 
 }
+function updateInfo(results){
+    // console.log(results);
+    if (results.status == "success"){
+        $('#Name').html(results.Name);    
+       $('#Symbol').html(results.Symbol);  
+       $('#Address').html(results.Address);
+       $('#FullTimeEmployees').html(results.FullTimeEmployees);
+       $('#AssetType').html(results.AssetType);
+       $('#DividendPerShare').html(results.DividendPerShare);
+       $('#DividendYield').html(results.DividendYield);
+       $('#DividendPerShare').html(results.DividendPerShare);
+       $('#PEGRatio').html(results.PEGRatio);
+       $('#PERatio').html(results.PERatio);
+       $('#52WeekHigh').html(results.Week52High);
+       $('#52WeekLow').html(results.Week52Low);
+       $('#EPS').html(results.EPS);
+      
+
+    }
+}
+
+
 
 $("#stock_select").on('submit', get_stock_info);
