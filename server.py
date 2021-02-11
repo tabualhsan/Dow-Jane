@@ -1,9 +1,11 @@
 """Server for stock app."""
 
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, jsonify
 
-from model import connect_to_db
+from model import connect_to_db, Stock
 import crud
+import requests
+
 
 
 from jinja2 import StrictUndefined
@@ -12,6 +14,9 @@ from jinja2 import StrictUndefined
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+
+API_KEY = '3LOOI2SBODXLNS10'
+
 
 # Homepage================================================================================
 @app.route('/')
@@ -79,14 +84,28 @@ def check_login():
 
 # stock info================================================================================    
 
-
 @app.route('/stocks')
-def all_stocks():
-    """View all stocks"""
+def stocks():
+    stock_list = Stock.query.all()
 
-    stocks = crud.get_stocks_info()
+    return render_template('all_stocks.html', stock_list=stock_list)
 
-    return render_template('all_stocks.html', stocks=stocks)
+
+
+
+@app.route('/api/stock')
+def get_stock():
+    """Json information about symbol"""
+
+    symbol = request.args.get('symbol')
+   
+    url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}'
+    res = requests.get(url)
+    
+    print(res.text)
+
+    return jsonify(res.json())
+   
 # favorite info================================================================================    
 
 @app.route('/favorites')
@@ -96,6 +115,14 @@ def all_favorites(favorite_id):
     userFavorites = crud.create_favorites(favorite_id)
 
     return render_template('favorite_stock.html', userFavorites=userFavorites, user_id=user)
+
+
+
+
+
+
+
+
 
 
 

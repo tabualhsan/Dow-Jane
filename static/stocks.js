@@ -1,25 +1,16 @@
 "use strict";
 
+function get_stock_info(evt){
 
-async function start() {
+    evt.preventDefault();
+
+    let symbol = $("#stock_symbol").val()
+    console.log(symbol);
 
 
-    const response = await fetch("https://www.alphavantage.co/query?function=OVERVIEW&symbol=AAPL&apikey=3LOOI2SBODXLNS10") 
-    const data = await response.json()
-    
+    $.get('/api/stock?symbol='+ symbol);
+
+
 }
 
-
-
-start()
-
-function createStockList(stockList){
-    document.getElementById("stocks").innerHTML = `
-    <option> Choose a Stock</option>
-        ${Object.keys(stockList).map(function (stocks) {
-            return `<option>${stocks}</option>`
-        }).join('')}     
-        </select>
-
-    `
-}
+$("#stock_select").on('submit', get_stock_info);

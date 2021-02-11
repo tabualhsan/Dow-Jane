@@ -1,29 +1,54 @@
 {% extends 'base.html' %}
 {% block title %}All Stocks{% endblock %}
 
-{% block body %}
 
-<title>stocks2</title>
+{% block body %}
   <h1>All Stocks</h1>
   
-  <div class="Dropdown">
-    <button class="dropbtn">Dropdown</button>
-    <div class="dropdown-content">
-        <ul>
-            <li><a href="/stocks">View all stocks</a></li>
-            <li><a href="/favorites">View all favorites</a></li>
-        </ul>    
+    <div>
+        <h2>Stocks</h2>
+        <form id = "stock_select">
+            <select name="stocks" id="stock_symbol">
+                <option default>Pick your stock</option>
+
+                {% for stock in stock_list %}
+                    <option value="{{stock.symbol}}">{{stock.symbol}} - {{ stock.stock_name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit">
+
+        </form>
     </div>
-   </div> 
-  <ul>
-    {% for stock in stocks %}
-      <li>
-        <a href="/stocks/{{ stock.stock_id }}">
-            {{stock.symbol}}
-          
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-  <script src="/static/stocks.js"></script>
+    <section id="display-company-info"></section>
+    <div class="company_info">
+        Company Name: <label id="company_name"><label>
+           <d1>
+               <dt>Symbol: </dt>
+               <dd id="symbol"></dd>
+           </d1> 
+      
+           <dt>Stock Name: </dt>
+           <dd idstock_name 
+           exchange 
+           asset_type 
+           status 
+           ipo_date  
+           delisting_date 
+           
+       
+
+
+
+    </div>
+
+    </section>
+    <script src="/static/stocks.js"></script>
+
 {% endblock %}
+
+
+
+
+
+
+

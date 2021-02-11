@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  {% block head %}
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-
-
-
     <link rel="stylesheet" href="/static/style.css">
-    <title>
-        {% block title %}{% endblock %}    
-    </title>
-    
-    {% block head %}{% endblock %}
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+{% endblock %}
+
 </head>
 <body>
     {% for msg in get_flashed_messages() %}
@@ -24,5 +24,6 @@
 
     {% block after_body %}{% endblock %}
     
+    <script src="/static/stocks.js"></script>
 </body>
 </html>

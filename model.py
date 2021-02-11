@@ -30,15 +30,11 @@ class Stock(db.Model):
     stock_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     symbol = db.Column(db.String, nullable = False)
     stock_name = db.Column(db.String, nullable = False)
-    description = db.Column(db.Text, nullable = False)
-    ceo = db.Column(db.String, nullable = False)
-    headquarters = db.Column(db.String, nullable = False)
-    founded = db.Column(db.String, nullable = False)
-    employees = db.Column(db.Integer, nullable = False)
-    address = db.Column(db.String, nullable = False)
-    sector = db.Column(db.String, nullable = False)
     exchange = db.Column(db.String, nullable = False)
     asset_type = db.Column(db.String, nullable = False)
+    status = db.Column(db.String, nullable = False)
+    ipo_date = db.Column(db.String, nullable = False)
+    delisting_date = db.Column(db.String, nullable = False)
     women_lead = db.Column(db.Boolean, default = True )
 
 
@@ -46,28 +42,6 @@ class Stock(db.Model):
     def __repr__(self):
         return f'<Stock stock_id={self.stock_id} symbol={self.symbol}>'
 
-
-
-class CompanyStat(db.Model):
-    """All Stocks stats"""
-
-    __tablename__ = 'company_stats'
-
-    stat_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
-    gross_profit = db.Column(db.Integer, nullable = False)
-    peratio = db.Column(db.Integer, nullable = False)
-    pegratio = db.Column(db.Integer, nullable = False)
-    dividend_share = db.Column(db.Integer,nullable = False)
-    dividend_yield = db.Column(db.Integer, nullable = False)
-    week52high = db.Column(db.Integer, nullable = False)
-    week52low = db.Column(db.Integer, nullable = False)
-    eps = db.Column(db.Integer, nullable = False)
-    stock_id = db.Column(db.Integer, db.ForeignKey('stocks.stock_id'),nullable = False,)
-    stock = db.relationship('Stock', backref = 'company_stats')
-
-
-    def __repr__(self):
-        return f'<Company_stats stat_id={self.stat_id} peratio={self.symbol}>'
 
 class UserFavorite(db.Model):
     """users favorites """
@@ -97,7 +71,7 @@ def connect_to_db(flask_app, db_uri='postgresql:///stocks' ):
     db.app = flask_app
     db.init_app(flask_app)
    
-
+    print("connected to db!!!")
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)

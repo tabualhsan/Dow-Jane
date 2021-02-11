@@ -1,8 +1,9 @@
-"""crud"""
+"""CRUD"""
 
 
-
-from model import db, User, Stock, CompanyStat, UserFavorite, connect_to_db
+from model import db, User, Stock, UserFavorite, connect_to_db
+import requests
+import csv
 
 # user info================================================================
 def get_user():
@@ -50,6 +51,8 @@ def check_password(email, password):
         return False
 # stock info ================================================================
 
+API_KEY = '3LOOI2SBODXLNS10'
+
 def create_stock_info(symbol, name, description, ceo, headquarters, founded, employees, address, sector, exchange, asset_type):
     """create a stocks profile"""
     stock = Stock(symbol=symbol, 
@@ -96,7 +99,37 @@ def get_company_stat():
     return CompanyStat.query.all()
 
 
-    
+def get_all_stocks():
+        
+    url = 'https://www.alphavantage.co/query?function=LISTING_STATUS&apikey='+ API_KEY
+    res = requests.get(url)
+    params = dict(key=API_KEY, text='stocks', lang='en-es')
+    res = requests.get(url, params=params)
+    decoded = res.content.decode('utf-8')
+
+    csv_read = csv.reader(decoded.splitlines(), delimiter=',')
+    all_stocks = list(csv_read)
+
+    return all_stocks
+
+
+
+def save_stocks(all_stocks):
+
+    count = 0
+    for stock in all_stocks:
+        if count != 0:
+            stockInfo =Stock(symbol = stock[0], stock_name=stock[1], exchange=stock[2],asset_type=stock[3],status=[4], ipo_date=stock[5], delisting_date=stock[6])
+
+       
+            db.session.add(stockInfo)
+            db.session.commit()
+        count += 1
+
+    return "Finished"
+def get_stock():
+
+    return StockInfo.query.all()
 # favorite info ================================================================
 def create_favorites(user_id, stock_id):
     """create a and returns user favorites from stocks list """
@@ -111,11 +144,18 @@ def create_favorites(user_id, stock_id):
 
     return userFavorites
 
+
 def user_favorites(user_id):
     """returns all user favorites"""
     user_id_identification = User.query.get(user_id)
 
     return Stock.query.all()
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
