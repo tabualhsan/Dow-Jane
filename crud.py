@@ -148,6 +148,11 @@ def create_favorites(user_id, stock_id):
 def user_favorites(user_id):
     """returns all user favorites"""
     user_id_identification = User.query.get(user_id)
+    # >>> favs = UserFavorites.query.filter(user_id=user_id).all()
+    # [<favObj=APPL>, <favObj=BBB>]
+    # stock_id = favs[0].stock_id -> 'AAPL'
+    # favs.stock -> all stocks associated with this user_id
+    # favs.user -> all users associated with this user_id
 
     return Stock.query.all()
 

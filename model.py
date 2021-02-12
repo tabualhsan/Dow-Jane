@@ -53,6 +53,7 @@ class UserFavorite(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     stock_id = db.Column(db.Integer, db.ForeignKey('stocks.stock_id'))
    
+  
 
     stock = db.relationship('Stock', backref = 'userFavorites')
     user = db.relationship('User', backref = 'userFavorites')
