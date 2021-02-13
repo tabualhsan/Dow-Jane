@@ -2,9 +2,10 @@
 
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 
-from model import connect_to_db, Stock
+from model import connect_to_db, Stock, db, UserFavorite
 import crud
 import requests
+import json
 
 
 
@@ -42,14 +43,17 @@ def register_user():
 
     email = request.form.get('email')
     password = request.form.get('password')
-    dob = request.form.get('dob')
+    # dob = request.form.get('dob')
     first_name = request.form.get('fname')
     last_name = request.form.get('lname')
+
+    print(request.form)
+
 
 
     user_email = crud.get_user_by_email(email)
     if user_email == None:
-        crud.create_user(email, password, dob, first_name, last_name)
+        crud.create_user(email, password,first_name, last_name)
         flash('Account created! Please log in.')
     else:
         flash('An account has already been used with this email, please login.')
@@ -77,8 +81,10 @@ def all_users():
 def check_login():
     """Return or redirect to homepage"""
 
-    email = request.args.get("login_email")
-    password = request.args.get("login_password")
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    print(request.args)
 
     password_verification = crud.check_password(email, password)
 
@@ -88,7 +94,7 @@ def check_login():
         session["user"] = user_details.user_id
         session["user_name"] = user_details.first_name
 
-        return redirect("/user-page")
+        return redirect("/stocks")
     else:
         flash("Email or password do not match. Try again!")
         return redirect("/")
@@ -112,6 +118,11 @@ def get_stock():
    
     url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}'
     res = requests.get(url)
+
+    stock_id= Stock.query.filter_by(symbol= symbol).first()
+    print(stock_id.stock_id)
+
+    res._content  = json.dumps({"stock_id", stock_id})
     
     if symbol:
         return res.json()
@@ -130,15 +141,25 @@ def all_favorites(favorite_id):
     return render_template('favorite_stock.html', userFavorites=userFavorites, user_id=user)
 
 @app.route('/api/favorite', methods=['POST'] )
-
 def set_favorites():
 
-    symbol = request.values
-    print(symbol)
+    symbol = request.values['symbol']
+    user = session["user"]
+    print (session)
+    print(symbol, user)
+    user_favorite = UserFavorite(user_id = symbol, stock_id =user)
+    db.session.add(user_favorite)
+    db.session.commit()
 
-    return symbol
+    return (symbol, user)
 
 
+@app.route('/api/userfavorite')
+def get_user_favorite():
+
+    favs = userFavorites.query.filter(user_id=user_id).all()
+
+    return render_template('all_stocks.html', favs=favs)
 
 
 

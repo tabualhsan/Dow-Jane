@@ -12,6 +12,7 @@ function get_stock_info(evt){
 }
 function updateInfo(results){
     $(".company_info").show();
+    $("#stock_id").html(results.stock_id);
     $('#Name').html(results.Name);    
     $('#Symbol_ticker').html(results.Symbol);
     $('#Description').html(results.Description);      
@@ -39,9 +40,23 @@ function favorite(evt){
     console.log(symbol);
 
     $.post('/api/favorite', {"symbol": symbol});
+  
+}
+
+function favorite_table(){
+    
+    
+    $.get('/api/userfavorite', favs);
+    console.log(favs);
+
+    $("#get").html(results.favorited)
+
 
 
 }
 
+
+
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
+

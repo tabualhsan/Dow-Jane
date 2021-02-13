@@ -24,12 +24,11 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_user(email, password, dob, first_name, last_name):
+def create_user(email, password, first_name, last_name):
     """create a new user"""
 
     user = User(email=email,
                 password=password, 
-                dob=dob, 
                 first_name=first_name, 
                 last_name=last_name)
 
@@ -40,6 +39,7 @@ def create_user(email, password, dob, first_name, last_name):
 
 def check_password(email, password):
     """ Check password and email for logging in"""
+    print (email,password)
 
     user= get_user_by_email(email)
 
@@ -147,20 +147,16 @@ def create_favorites(user_id, stock_id):
 
 def user_favorites(user_id):
     """returns all user favorites"""
-    user_id_identification = User.query.get(user_id)
-    # >>> favs = UserFavorites.query.filter(user_id=user_id).all()
+    favs = UserFavorites.query.filter(user_id=user_id).all()
     # [<favObj=APPL>, <favObj=BBB>]
     # stock_id = favs[0].stock_id -> 'AAPL'
     # favs.stock -> all stocks associated with this user_id
     # favs.user -> all users associated with this user_id
+    
 
-    return Stock.query.all()
-
-
-
-
-
-
+    db.session.add(favs)
+    db.session.commit()
+    return favs
 
 
 if __name__ == '__main__':
