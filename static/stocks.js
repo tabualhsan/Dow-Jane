@@ -12,7 +12,8 @@ function get_stock_info(evt){
 }
 function updateInfo(results){
     $(".company_info").show();
-    $("#stock_id").html(results.stock_id);
+    $("#StockID").html(results.StockID);
+    console.log(results.StockID);
     $('#Name').html(results.Name);    
     $('#Symbol_ticker').html(results.Symbol);
     $('#Description').html(results.Description);      
@@ -36,20 +37,21 @@ function favorite(evt){
     $("#not_favorite").hide();
     $("#favorited").show();
 
-    var symbol = $('#Symbol_ticker').text();
-    console.log(symbol);
+    var stock_id = $('#StockID').text();
+    console.log(stock_id);
 
-    $.post('/api/favorite', {"symbol": symbol});
+    $.post('/api/favorite', {"stock_id": stock_id});
   
 }
 
-function favorite_table(){
+function favorite_table(results){
     
     
     $.get('/api/userfavorite', favs);
     console.log(favs);
 
-    $("#get").html(results.favorited)
+    $("#get").html(results.favorited);
+    $('#Name').html(results.Name);   
 
 
 
@@ -59,4 +61,5 @@ function favorite_table(){
 
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
+$("favorited").on('click', favorite_table);
 

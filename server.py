@@ -119,13 +119,18 @@ def get_stock():
     url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}'
     res = requests.get(url)
 
-    stock_id= Stock.query.filter_by(symbol= symbol).first()
-    print(stock_id.stock_id)
+    stock= Stock.query.filter_by(symbol= symbol).first()
+    print(stock.stock_id)
 
-    res._content  = json.dumps({"stock_id", stock_id})
+    json_response = res.json()
+
+    json_response.update({"StockID": stock.stock_id})
+
+
+    # # dict_response["stock_id"] = stock_id
     
     if symbol:
-        return res.json()
+        return json_response
     else:
         return jsonify({"status": 'error','message': 'No information found about this stock' })
 
@@ -135,7 +140,7 @@ def get_stock():
 @app.route('/favorites')
 def all_favorites(favorite_id):
     """View all favorites"""
-    sesssion['user_id'] = user
+    user = session["user"]
     userFavorites = crud.create_favorites(favorite_id)
 
     return render_template('favorite_stock.html', userFavorites=userFavorites, user_id=user)
@@ -143,16 +148,15 @@ def all_favorites(favorite_id):
 @app.route('/api/favorite', methods=['POST'] )
 def set_favorites():
 
-    symbol = request.values['symbol']
-    user = session["user"]
-    print (session)
-    print(symbol, user)
-    user_favorite = UserFavorite(user_id = symbol, stock_id =user)
+    stock_id = request.values['stock_id']
+    print(session)
+    user_id= session["user"]
+    user_favorite = UserFavorite(user_id= user_id, stock_id =stock_id)
     db.session.add(user_favorite)
     db.session.commit()
-
-    return (symbol, user)
-
+    print(stock_id, user_id)
+   
+    return render_template('favorite_stock.html', user_id=user_id, user_favorite=user_favorite)
 
 @app.route('/api/userfavorite')
 def get_user_favorite():

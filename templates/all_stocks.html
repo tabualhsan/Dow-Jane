@@ -3,8 +3,7 @@
 
 
 {% block body %}
-  <h1>All Stocks</h1>
-  
+  <h1>Tinkerbell</h1>
     <div>
         <h2>Stocks</h2>
         <form id = "stock_select">
@@ -20,13 +19,16 @@
     </div>
 
         <h3>Favorites</h3> 
-        
-        <table name="favorite_table" id="favorite_table" > 
+    <table>
+        <dt>My Favorites:</dt>
+        <dd id="Name"></dd>
+     </table>
+        <!-- <table name="favorite_table" id="favorite_table" > 
             <div style="width:500px;height:100px;border:1px solid #000;"></div>
             
-    
-        </table>
-    
+     -->
+        <!-- </table>
+     -->
 
     <section id="display-company-info"></section>
     <div class="company_info" id="company_info" hidden>
@@ -35,7 +37,7 @@
         <i class="bi bi-heart-fill" id="favorited" hidden></i>
 
         <dl>
-            <dd id="stock_id" hidden></dd> 
+            <dd id="StockID" hidden></dd> 
             <dt>Name:</dt>
             <dd id="Name"></dd>  
             <dt>Symbol:</dt>

@@ -39,7 +39,6 @@ def create_user(email, password, first_name, last_name):
 
 def check_password(email, password):
     """ Check password and email for logging in"""
-    print (email,password)
 
     user= get_user_by_email(email)
 
