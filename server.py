@@ -158,10 +158,14 @@ def set_favorites():
    
     return render_template('favorite_stock.html', user_id=user_id, user_favorite=user_favorite)
 
-@app.route('/api/userfavorite')
+@app.route('/api/userfavorite',methods = ['GET'])
 def get_user_favorite():
 
-    favs = userFavorites.query.filter(user_id=user_id).all()
+    user_id= session["user"]
+
+    favs = db.session.query(UserFavorite.stock_id,Stock.stock_name).filter_by(user_id = user_id).join(Stock).all()
+    print(favs)
+
 
     return render_template('all_stocks.html', favs=favs)
 

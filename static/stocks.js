@@ -50,9 +50,8 @@ function favorite_table(results){
     $.get('/api/userfavorite', favs);
     console.log(favs);
 
-    $("#get").html(results.favorited);
-    $('#Name').html(results.Name);   
-
+    $("#user_favorites").html(results.favs);
+   
 
 
 }
