@@ -29,8 +29,23 @@ function updateInfo(results){
     $('#52WeekLow').html(results.Week52Low);
     $('#EPS').html(results.EPS);
 
+}
+
+
+function favorite_table(){
+
+    // for fav in favs:
+        // console.log(fav)
+    var favs = ($.get('/api/userfavorite'));
+    console.log(favs[0]);
+
+    $("#user_favorites").html(favs[0]);
+
+    console.log("Hello");
+
 
 }
+
 
 function favorite(evt){
     evt.preventDefault();
@@ -40,25 +55,15 @@ function favorite(evt){
     var stock_id = $('#StockID').text();
     console.log(stock_id);
 
-    $.post('/api/favorite', {"stock_id": stock_id});
+    $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
   
 }
 
-function favorite_table(results){
-    
-    
-    $.get('/api/userfavorite', favs);
-    console.log(favs);
 
-    $("#user_favorites").html(results.favs);
-   
-
-
-}
 
 
 
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
-$("favorited").on('click', favorite_table);
+$(document).ready(favorite_table())
 

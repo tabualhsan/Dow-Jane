@@ -164,11 +164,11 @@ def get_user_favorite():
     user_id= session["user"]
 
     favs = db.session.query(UserFavorite.stock_id,Stock.stock_name).filter_by(user_id = user_id).join(Stock).all()
-    print(favs)
+   
+    print(json.dumps(favs))
 
-
-    return render_template('all_stocks.html', favs=favs)
-
+    # return json.dumps(favs)
+    return jsonify(favs)
 
 
 
