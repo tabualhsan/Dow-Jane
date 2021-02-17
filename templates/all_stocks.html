@@ -31,9 +31,8 @@
             {% endfor %}
         </d1>
     </div>
-
-
     
+
     <div id="favorite-table"></div>
     <section id="display-company-info"></section>
     <div class="company_info" id="company_info" hidden>
@@ -71,12 +70,21 @@
             <dd id="52WeekLow"></dd>   
             <dt>52WeekLow:</dt>
             <dd id="EPS"></dd> 
+            <span id="EPS-hover" class="tooltip" hidden>Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to.</span>
+
             <dt>EPS</dt>
         
         </dl>
     </div>
 
     </section>
+    <div class="content">
+        <span>EPS</span> <span>52WeekLow</span>
+    </div>
+
+    <div id="dialog" title=""></div>
+
+    
 
 {% endblock %}
 
