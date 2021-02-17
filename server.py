@@ -18,15 +18,6 @@ app.jinja_env.undefined = StrictUndefined
 
 API_KEY = '3LOOI2SBODXLNS10'
 
-definitions = {
-        "Eps":"Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. ",
-        "Dividend Yield":"The ratio of the company's annual dividend compared to its share price.",
-        "Dividend Per Share" : "The sum of declared dividends issued by a company for every ordinary share outstanding.",
-        "PERRatio":"The ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS). The price-to-earnings ratio is also sometimes known as the price multiple or the earnings multiple.",
-        "PEGratio":"The 'PEG ratio' (price/earnings to growth ratio) is a valuation metric for determining the relative trade-off between the price of a stock, the earnings generated per share (EPS), and the company's expected growth. In general, the P/E ratio is higher for a company with a higher growth rate.",
-        "52WeekHigh":"The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year.",
-        "52WeekLow":"The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year."
-}
 
 
 
@@ -103,9 +94,13 @@ def check_login():
 
 @app.route('/stocks')
 def stocks():
+    user = session["user"]
     stock_list = Stock.query.all()
+    # favs = UserFavorite.query.filter_by(user_id=user).all()
+    favs = db.session.query(UserFavorite.stock_id,Stock.stock_name).filter_by(user_id = user).join(Stock).all()
+    print(favs)
 
-    return render_template('all_stocks.html', stock_list=stock_list)
+    return render_template('all_stocks.html', stock_list=stock_list, favs=favs)
 
 
 
@@ -125,6 +120,8 @@ def get_stock():
     json_response = res.json()
 
     json_response.update({"StockID": stock.stock_id})
+
+    
 
 
     # # dict_response["stock_id"] = stock_id
@@ -148,12 +145,18 @@ def all_favorites(favorite_id):
 @app.route('/api/favorite', methods=['POST'] )
 def set_favorites():
 
+
     stock_id = request.values['stock_id']
     print(session)
     user_id= session["user"]
-    user_favorite = UserFavorite(user_id= user_id, stock_id =stock_id)
-    db.session.add(user_favorite)
-    db.session.commit()
+   
+    check = UserFavorite.query.filter_by(user_id=user_id, stock_id=stock_id).first() 
+    if not check:
+        user_favorite = UserFavorite(user_id= user_id, stock_id =stock_id)
+        db.session.add(user_favorite)
+        db.session.commit()
+   
+    
     print(stock_id, user_id)
    
     return render_template('favorite_stock.html', user_id=user_id, user_favorite=user_favorite)
@@ -169,8 +172,21 @@ def get_user_favorite():
 
     # return json.dumps(favs)
     return jsonify(favs)
+    
 
+words = {
+        "Eps":"Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. ",
+        "Dividend Yield":"The ratio of the company's annual dividend compared to its share price.",
+        "Dividend Per Share" : "The sum of declared dividends issued by a company for every ordinary share outstanding.",
+        "PERRatio":"The ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS). The price-to-earnings ratio is also sometimes known as the price multiple or the earnings multiple.",
+        "PEGratio":"The 'PEG ratio' (price/earnings to growth ratio) is a valuation metric for determining the relative trade-off between the price of a stock, the earnings generated per share (EPS), and the company's expected growth. In general, the P/E ratio is higher for a company with a higher growth rate.",
+        "52WeekHigh":"The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year.",
+        "52WeekLow":"The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year."}
+# @app.route('/api/defintions', methods = ['GET'])
+# def define_words():
 
+#     for word in words:
+#         if word in 
 
 
 

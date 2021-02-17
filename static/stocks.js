@@ -37,11 +37,11 @@ function favorite_table(){
     // for fav in favs:
         // console.log(fav)
     var favs = ($.get('/api/userfavorite'));
-    console.log(favs[0]);
+    console.log(favs[1]);
+    // var favs = JSON.parse(favs);
+    // console.log(favs[1]);
+    $("#user_favorites").html(favs);
 
-    $("#user_favorites").html(favs[0]);
-
-    console.log("Hello");
 
 
 }
@@ -56,11 +56,33 @@ function favorite(evt){
     console.log(stock_id);
 
     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
-  
+
+
+
 }
+// var favoriteBox =document.getElementById("favorite-table");
+// var btn = document.getElementById("btn");
+// function renderHTML(favorites){
 
+//     var favs = ($.get('/api/userfavorite'));
+// // }
 
+// function get_definition {
+//     let displayCompany = document.getElementById("display-Company");
 
+//     word.addEventListener('mouseover', (get_definition)=> word.innerText = '')
+
+//     word.addEventListener('mouseleave', (get_definition) => word.innerText = '')
+
+//   }
+
+// $(document).ready(get_stock_info(){
+//     $( "#definitions" ).hover(get_stock_info() {
+//            $('.word').word({
+//         show: true
+//     });
+//   });  
+// });
 
 
 $("#stock_select").on('submit', get_stock_info);

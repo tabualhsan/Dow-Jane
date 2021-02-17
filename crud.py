@@ -72,30 +72,30 @@ def get_stocks_info():
 
     return Stock.query.all()
 
-def create_company_stat():
-    """create stocks stats"""
+# def create_company_stat():
+#     """create stocks stats"""
 
-    companyStat= CompanyStat(
-            gross_profit = gross_profit,
-            peratio=peratio,
-            pegratio = pegratio,
-            dividend_share = dividend_share,
-            dividend_yield = dividend_yield, 
-            week52high = week52high, 
-            week52low =  week52low,
-            eps = eps, 
-            stock_id = stock_id,
-            stock = stock )
+#     companyStat= CompanyStat(
+#             gross_profit = gross_profit,
+#             peratio=peratio,
+#             pegratio = pegratio,
+#             dividend_share = dividend_share,
+#             dividend_yield = dividend_yield, 
+#             week52high = week52high, 
+#             week52low =  week52low,
+#             eps = eps, 
+#             stock_id = stock_id,
+#             stock = stock )
 
-    db.session.add(company_stat)
-    db.session.commit()
+#     db.session.add(company_stat)
+#     db.session.commit()
 
-    return company_stat
+#     return company_stat
 
-def get_company_stat():
-    """Return all company stat"""
+# def get_company_stat():
+#     """Return all company stat"""
 
-    return CompanyStat.query.all()
+#     return CompanyStat.query.all()
 
 
 def get_all_stocks():
