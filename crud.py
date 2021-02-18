@@ -104,11 +104,12 @@ def get_stock():
 
 
 
-# def get_women_lead():
+def get_women_lead():
 
-#     women_lead = ['GM', 'BBY', 'ANTM','HSY','VTR','ORCL','TPR','ULTA','NDAQ', 'DUK','PGR','OXY','BEN','SYF', 'VRTX','CDW', 'CUS','OTIS','REG', 'ZTS', 'CLX', 'ROST','CE','AMD','ACN','GPS','UPS','ANET','NOC']
-
-#     return women_lead.query.all()
+    women_lead = ['GM', 'BBY', 'ANTM','HSY','VTR','ORCL','TPR','ULTA','NDAQ', 'DUK','PGR','OXY','BEN','SYF', 'VRTX','CDW', 'CUS','OTIS','REG', 'ZTS', 'CLX', 'ROST','CE','AMD','ACN','GPS','UPS','ANET','NOC']
+    for stock in women_lead:
+        print(stock)
+    # return women_lead.query.all()
 
 # favorite info ================================================================
 def create_favorites(user_id, stock_id):

@@ -25,11 +25,12 @@ function updateInfo(results){
     $('#DividendPerShare').html(results.DividendPerShare);
     $('#PEGRatio').html(results.PEGRatio);
     $('#PERatio').html(results.PERatio);
-    $('#52WeekHigh').html(results.Week52High);
-    $('#52WeekLow').html(results.Week52Low);
+    $('#EPS').html(results.EPS);
+    $('#52WeekHigh').html(results.r["52WeekHigh"]);
+    $('#52WeekLow').html(results.r["52WeekLow"]);
     $('#EPS').html(results.EPS);
 
-}
+};
 
 
 function favorite_table(){
@@ -57,23 +58,23 @@ function favorite(evt){
 
     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
 
-};
-const messages = {
-    "EPS": "Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. ",
-    "Dividend Yield": "The ratio of the company's annual dividend compared to its share price.",
-    "Dividend Per Share" : "The sum of declared dividends issued by a company for every ordinary share outstanding.",
-    "PERRatio": "The ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS). The price-to-earnings ratio is also sometimes known as the price multiple or the earnings multiple.",
-    "PEGratio": "The 'PEG ratio' (price/earnings to growth ratio) is a valuation metric for determining the relative trade-off between the price of a stock, the earnings generated per share (EPS), and the company's expected growth. In general, the P/E ratio is higher for a company with a higher growth rate.",
-    "52WeekHigh": "The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year.",
-    "52WeekLow": "The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year."
+ };
+// const messages = {
+//     "EPS": "Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. ",
+//     "Dividend Yield": "The ratio of the company's annual dividend compared to its share price.",
+//     "Dividend Per Share" : "The sum of declared dividends issued by a company for every ordinary share outstanding.",
+//     "PERRatio": "The ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS). The price-to-earnings ratio is also sometimes known as the price multiple or the earnings multiple.",
+//     "PEGratio": "The 'PEG ratio' (price/earnings to growth ratio) is a valuation metric for determining the relative trade-off between the price of a stock, the earnings generated per share (EPS), and the company's expected growth. In general, the P/E ratio is higher for a company with a higher growth rate.",
+//     "52WeekHigh": "The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year.",
+//     "52WeekLow": "The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year."
 
-};
-function wordDef(e){
+// };
+// function wordDef(e){
     
-    console.log(e.target);
+//     console.log(e.target);
     
   
-};
+// };
 
 
 
@@ -97,5 +98,5 @@ function wordDef(e){
 
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
-$(".toggle-info").load('/api/stocks?symbol=A');
 $(document).ready(favorite_table());
+// $(".toggle-info").load('/api/stocks?symbol=A'); 
