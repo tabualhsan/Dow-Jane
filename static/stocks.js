@@ -10,6 +10,11 @@ function get_stock_info(evt){
 
 
 }
+
+function get_women_lead(evt){
+
+
+}
 function updateInfo(results){
     $(".company_info").show();
     $("#StockID").html(results.StockID);
@@ -19,6 +24,8 @@ function updateInfo(results){
     $('#Description').html(results.Description);      
     $('#Address').html(results.Address);
     $('#FullTimeEmployees').html(results.FullTimeEmployees);
+    $('#RevenueTTM').html(results.RevenueTTM);
+    $('#FiscalYearEnd').html(results.FiscalYearEnd);
     $('#AssetType').html(results.AssetType);
     $('#DividendPerShare').html(results.DividendPerShare);
     $('#DividendYield').html(results.DividendYield);
@@ -26,8 +33,9 @@ function updateInfo(results){
     $('#PEGRatio').html(results.PEGRatio);
     $('#PERatio').html(results.PERatio);
     $('#EPS').html(results.EPS);
-    $('#52WeekHigh').html(results.r["52WeekHigh"]);
-    $('#52WeekLow').html(results.r["52WeekLow"]);
+    $('#WomenLead').html(results.WomenLead ? 'Yes': 'No');
+    $('#52WeekHigh').html(results["52WeekHigh"]);
+    $('#52WeekLow').html(results["52WeekLow"]);
     $('#EPS').html(results.EPS);
 
 };

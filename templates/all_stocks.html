@@ -26,7 +26,7 @@
             <dd id="user_favorites"></dd>
             {% for fav in favs %}
 
-                <li> {{fav[1]}} </li>
+                <li> &#10084 {{fav[1]}} </li>
 
             {% endfor %}
         </d1>
@@ -50,18 +50,26 @@
             <dd id="Description"></dd>
             <dt>Address:</dt>
             <dd id="Address"></dd>
-            <dt>FullTimeEmployees:</dt>
+            <dt>Full Time Employees:</dt>
             <dd id="FullTimeEmployees"></dd>
-            <dt>AssetType:</dt>   
+            <dt><a href="#RevenueTTM_modal" rel="modal:open">Revenue-TTM:</a></dt>
+            <dd id="RevenueTTM"></dd>
+            <dt><a href="#GrossProfitTTM_modal" rel="modal:open">Gross Profit-TTM</a></dt>
+            <dd id="GrossProfitTTM"></dd>
+            <dt><a href="#FiscalYearEnd_modal" rel= "modal:open">Fiscal Year End:</a></dt>
+            <dd id="FiscalYearEnd"></dd>
+            <dt>Asset Type:</dt>   
             <dd id="AssetType"></dd>
-            <dt><a href="#DividendYield_modal" rel="modal:open">DividendYield:</a></dt>   
+            <dt><a href="#DividendYield_modal" rel="modal:open">Dividend Yield:</a></dt>   
             <dd id="DividendYield"></dd>
-            <dt><a href= "#DividendPerShare_modal" rel= "modal:open">DividendPerShare:</a></dt>   
+            <dt><a href= "#DividendPerShare_modal" rel= "modal:open">Dividend Per Share:</a></dt>   
             <dd id="DividendPerShare"></dd>   
             <dt><a href="#PEGRatio_modal"rel="modal:open">PEGRatio:</a></dt>
             <dd id="PEGRatio"></dd>   
             <dt><a href="#PERatio_modal" rel="modal:open">PERatio:</a></dt>
             <dd id="PERatio"></dd>   
+            <dt><a href="#WomenLead_modal" rel="modal:open">Women Lead:</a></dt>
+            <dd id="WomenLead"></dd>
             <dt><a href="#52WeekHigh_modal" rel="modal:open">52WeekHigh:</a></dt>
             <dd id="52WeekHigh"></dd>   
             <dt><a href="#52WeekLow_modal" rel="modal:open">52WeekLow:</a></dt>
@@ -74,7 +82,7 @@
 
 
     <div id="symbol_modal" class="modal">
-        <p>Symbol definition</p>
+        <p>A ticker symbol or stock symbol is an abbreviation used to uniquely identify publicly traded shares of a particular stock on a particular stock market. A stock symbol may consist of letters, numbers or a combination of both.</p>
     </div>
     <div id="DividendYield_modal" class="modal">
         <p>The ratio of the company's annual dividend compared to its share price.</p>
@@ -96,8 +104,17 @@
     <div id="EPS_modal" class="modal">
         <p>Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to.</p>
     </div>
-    
+    <div id="FiscalYearEnd_modal" class="modal">
+        <p>A fiscal year is a one-year period that companies and governments use for financial reporting and budgeting. A fiscal year is most commonly used for accounting purposes to prepare financial statements. Although a fiscal year can start on January 1st and end on December 31st, not all fiscal years correspond with the calendar year. A fiscal year is important to publicly-traded corporations and their investors since it is the period over which revenue and earnings are measured, making year-to-year comparisons possible. For tax purposes, the Internal Revenue Service (IRS) allows companies to be either calendar-year taxpayers or fiscal-year taxpayers</p>
+    <div id="RevenueTTM_modal" class="modal">
+        <p>TTM Revenue describes the revenue that a company earns over the trailing 12 months (TTM) of business. .</p>
+    </div>
+    <div id="GrossProfitTTM_modal" class="modal">
+        <p>This value measures the percent of revenue left after paying all direct production expenses. It is calculated as the trailing 12 months Total Revenue minus the trailing 12 months Cost of Goods Sold divided by the trailing 12 months Total Revenue and multiplied by 100.</p>
+    </div>
 
+    <div id="WomenLead_modal" class="modal">
+        <p>Companies who currently hold a women CEO positions. "Women currently ONLY hold (5.8%) of CEO positions at S&P 500 companies"<a href="https://www.catalyst.org/research/women-in-sp-500-companies/"> Checkout who these women are!</a> </p>   </div>
 
     </div>
     </section>

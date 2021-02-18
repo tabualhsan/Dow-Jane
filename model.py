@@ -36,7 +36,7 @@ class Stock(db.Model):
     status = db.Column(db.String, nullable = False)
     ipo_date = db.Column(db.String, nullable = False)
     delisting_date = db.Column(db.String, nullable = False)
-    women_lead = db.Column(db.Boolean, default = True )
+    women_lead = db.Column(db.Boolean, default = False )
 
 
     

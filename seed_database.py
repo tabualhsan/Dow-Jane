@@ -6,9 +6,11 @@ from datetime import datetime
 
 
 
+
 import crud
 import model
 import server
+
 
 
 
@@ -21,14 +23,13 @@ model.db.create_all()
 
 
 
-women_lead_stocks = ['GM', 'BBY', 'ANTM','HSY','VTR','ORCL','TPR','ULTA','NDAQ', 'DUK','PGR','OXY','BEN','SYF', 'VRTX','CDW', 'CUS','OTIS','REG', 'ZTS', 'CLX', 'ROST','CE','AMD','ACN','GPS','UPS','ANET','NOC']
 
-# save_stocks(all_stocks)
-# all_stocks = get_all_stocks()
-# db.session.add(stocks)
-# db.session.commit()
+all_stocks = crud.get_all_stocks()
+crud.save_stocks(all_stocks)
 
-# new_user = User(email='admin@website.com', password='admin')
+# Create 10 users
+for n in range(10):
+    email = f'user{n}@test.com'  
+    password = 'test'
 
-# db.session.add(new_user)
-# db.session.commit()
+    user = crud.create_user(email, password)

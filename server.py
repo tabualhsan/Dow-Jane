@@ -118,7 +118,7 @@ def get_stock():
 
     json_response = res.json()
 
-    json_response.update({"StockID": stock.stock_id})
+    json_response.update({"StockID": stock.stock_id, "WomenLead": stock.women_lead})
     
     
     if symbol:

@@ -86,12 +86,15 @@ def get_all_stocks():
 
 
 def save_stocks(all_stocks):
+    women_lead = ['GM', 'BBY', 'ANTM','HSY','VTR','ORCL','TPR','ULTA','NDAQ', 'DUK','PGR','OXY','BEN','SYF', 'VRTX','CDW', 'CUS','OTIS','REG', 'ZTS', 'CLX', 'ROST','CE','AMD','ACN','GPS','UPS','ANET','NOC']
 
     count = 0
     for stock in all_stocks:
         if count != 0:
-            stockInfo =Stock(symbol = stock[0], stock_name=stock[1], exchange=stock[2],asset_type=stock[3],status=[4], ipo_date=stock[5], delisting_date=stock[6])
-
+            if stock[0] in women_lead:
+                stockInfo = Stock(symbol = stock[0], stock_name=stock[1], exchange=stock[2],asset_type=stock[3],status=[4], ipo_date=stock[5], delisting_date=stock[6], women_lead = True)
+            else:
+                stockInfo = Stock(symbol = stock[0], stock_name=stock[1], exchange=stock[2],asset_type=stock[3],status=[4], ipo_date=stock[5], delisting_date=stock[6])
        
             db.session.add(stockInfo)
             db.session.commit()
@@ -104,12 +107,6 @@ def get_stock():
 
 
 
-def get_women_lead():
-
-    women_lead = ['GM', 'BBY', 'ANTM','HSY','VTR','ORCL','TPR','ULTA','NDAQ', 'DUK','PGR','OXY','BEN','SYF', 'VRTX','CDW', 'CUS','OTIS','REG', 'ZTS', 'CLX', 'ROST','CE','AMD','ACN','GPS','UPS','ANET','NOC']
-    for stock in women_lead:
-        print(stock)
-    # return women_lead.query.all()
 
 # favorite info ================================================================
 def create_favorites(user_id, stock_id):
