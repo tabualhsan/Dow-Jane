@@ -44,7 +44,7 @@
             <dd id="StockID" hidden></dd> 
             <dt>Name:</dt>
             <dd id="Name"></dd>  
-            <dt>Symbol:</dt>
+            <dt><a href="#symbol_modal" rel="modal:open">Symbol:</a></dt>
             <dd id="Symbol_ticker"></dd>  
             <dt>Description:</dt>
             <dd id="Description"></dd>
@@ -58,7 +58,7 @@
             <dd id="DividendPerShare"></dd>   
             <dt>DividendPerShare:</dt>
             <dd id="DividendYield"></dd>   
-            <dt>DividendYield:</dt>
+            <dt><a href="#DividendYield_modal" rel="modal:open">DividendYield:</a></dt>
             <dd id="DividendPerShare"></dd>   
             <dt>DividendPerShare:</dt>
             <dd id="PEGRatio"></dd>   
@@ -69,20 +69,23 @@
             <dt>52WeekHigh:</dt>
             <dd id="52WeekLow"></dd>   
             <dt>52WeekLow:</dt>
-            <dd id="EPS"></dd> 
-            <span id="EPS-hover" class="tooltip" hidden>Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to.</span>
-
-            <dt>EPS</dt>
-        
+            <div class="toggle-info">
+                <dd id="EPS"></dd> 
+                <dt id="show-info">EPS:</dt>
+                <dt class="info">Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. </dt>
+            </div>  
         </dl>
     </div>
 
-    </section>
-    <div class="content">
-        <span>EPS</span> <span>52WeekLow</span>
+
+    <div id="symbol_modal" class="modal">
+        <p>Symbol definition</p>
+    </div>
+    <div id="DividendYield_modal" class="modal">
+        <p>The ratio of the company's annual dividend compared to its share price.</p>
     </div>
 
-    <div id="dialog" title=""></div>
+    </section>
 
     
 

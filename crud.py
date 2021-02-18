@@ -67,35 +67,7 @@ def create_stock_info(symbol, name, description, ceo, headquarters, founded, emp
 
     return stock
 
-def get_stocks_info():
-    """Return all stocks"""
 
-    return Stock.query.all()
-
-# def create_company_stat():
-#     """create stocks stats"""
-
-#     companyStat= CompanyStat(
-#             gross_profit = gross_profit,
-#             peratio=peratio,
-#             pegratio = pegratio,
-#             dividend_share = dividend_share,
-#             dividend_yield = dividend_yield, 
-#             week52high = week52high, 
-#             week52low =  week52low,
-#             eps = eps, 
-#             stock_id = stock_id,
-#             stock = stock )
-
-#     db.session.add(company_stat)
-#     db.session.commit()
-
-#     return company_stat
-
-# def get_company_stat():
-#     """Return all company stat"""
-
-#     return CompanyStat.query.all()
 
 
 def get_all_stocks():
@@ -129,6 +101,15 @@ def save_stocks(all_stocks):
 def get_stock():
 
     return StockInfo.query.all()
+
+
+
+# def get_women_lead():
+
+#     women_lead = ['GM', 'BBY', 'ANTM','HSY','VTR','ORCL','TPR','ULTA','NDAQ', 'DUK','PGR','OXY','BEN','SYF', 'VRTX','CDW', 'CUS','OTIS','REG', 'ZTS', 'CLX', 'ROST','CE','AMD','ACN','GPS','UPS','ANET','NOC']
+
+#     return women_lead.query.all()
+
 # favorite info ================================================================
 def create_favorites(user_id, stock_id):
     """create a and returns user favorites from stocks list """

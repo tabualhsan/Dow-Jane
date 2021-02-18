@@ -8,7 +8,17 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
-
+div.window-content {
+  overflow: hidden;
+  display: flex;
+  max-width: 300px;
+}
+.window-content ul {
+  flex: 1 0;
+  list-style: none;
+  padding: 0;
+  margin: 1em 0 1em 1em;
+}
 
 .app {
     height: 100%;
