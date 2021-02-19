@@ -125,12 +125,12 @@ def create_favorites(user_id, stock_id):
 def delete_stock_user(user_id, stock_id):
 
     
-        db.session.query(UserFavorites).filter(UserFavorites.user_id == user_id).filter(UserFavorites.stock_id == stock_id).delete()
+        db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id).filter(UserFavorite.stock_id == stock_id).delete()
         db.session.commit()
 
 def user_favorites(user_id):
     """returns all user favorites"""
-    favs = UserFavorites.query.filter(user_id=user_id).all()
+    favs = UserFavorite.query.filter(user_id=user_id).all()
     # [<favObj=APPL>, <favObj=BBB>]
     # stock_id = favs[0].stock_id -> 'AAPL'
     # favs.stock -> all stocks associated with this user_id

@@ -114,7 +114,7 @@ def get_stock():
     res = requests.get(url)
 
     stock= Stock.query.filter_by(symbol= symbol).first()
-    print(stock.stock_id)
+    # print(stock.stock_id)
 
     json_response = res.json()
 
@@ -169,13 +169,13 @@ def get_user_favorite():
     return jsonify(favs)
 
 @app.route("/delete_favorite.json", methods=['POST'])
-def delete_loan_json():
+def delete_stock_json():
 
     user_id = session['user']
 
 
     favs = request.get_json()
-    stock_id = data.get("stock_id")
+    stock_id = favs.get("stock_id")
 
 
     crud.delete_stock_user(user_id, stock_id)
