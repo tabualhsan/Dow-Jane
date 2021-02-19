@@ -43,13 +43,11 @@ function updateInfo(results){
 
 function favorite_table(){
 
-    // for fav in favs:
-        // console.log(fav)
     var favs = ($.get('/api/userfavorite'));
-    console.log(favs[1]);
-    // var favs = JSON.parse(favs);
     // console.log(favs[1]);
+    
     $("#user_favorites").html(favs);
+
 
 
 

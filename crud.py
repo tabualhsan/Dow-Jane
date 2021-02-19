@@ -122,6 +122,11 @@ def create_favorites(user_id, stock_id):
 
     return userFavorites
 
+def delete_stock_user(user_id, stock_id):
+
+    
+        db.session.query(UserFavorites).filter(UserFavorites.user_id == user_id).filter(UserFavorites.stock_id == stock_id).delete()
+        db.session.commit()
 
 def user_favorites(user_id):
     """returns all user favorites"""

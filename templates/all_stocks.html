@@ -18,27 +18,26 @@
         </form>
     </div>
 
-     <h3>Favorites</h3> 
-    <section id="display-favorites"></section>
-    <div class="Favorites" >
-        <d1>    
-            <dt>My Favorites:</dt>
-            <dd id="user_favorites"></dd>
-            {% for fav in favs %}
-
-                <li> &#10084 {{fav[1]}} </li>
-
-            {% endfor %}
-        </d1>
+    <h3>Favorites</h3>
+    <div class="Favorites" ></div>
+        <form id= "favorited">
+            <select name= "My Favorites" id="user_favorites">
+                <option default>My Favorites</option>
+                {% for fav in favs %}
+                    <option value={{fav[1]}}></option> 
+                {% endfor %}
+            </select>
+            <input type="submit">
+        
+         </form>
     </div>
     
 
     <div id="favorite-table"></div>
     <section id="display-company-info"></section>
     <div class="company_info" id="company_info" hidden>
-        
-        <i class="bi bi-heart" id="not_favorite"></i>
-        <i class="bi bi-heart-fill" id="favorited" hidden></i>
+        <button type="button"  id="not_favorite" class="bi bi-heart"></button>
+        <button class="bi bi-heart-fill" id="favorited" hidden></button>
 
         <dl>
             <dd id="StockID" hidden></dd> 
