@@ -112,7 +112,7 @@ def get_stock():
 def create_favorites(user_id, stock_id):
     """create a and returns user favorites from stocks list """
 
-    userFavorites = UserFavorites(
+    userFavorites = UserFavorite(
                     user_id = user_id,
                     stock_id = stock_id)
 
@@ -123,10 +123,13 @@ def create_favorites(user_id, stock_id):
     return userFavorites
 
 def delete_stock_user(user_id, stock_id):
+        fav_obj = db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
+        print(fav_obj)
 
-    
-        db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id).filter(UserFavorite.stock_id == stock_id).delete()
+        db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
+        db.session.delete(fav_obj)
         db.session.commit()
+        
 
 def user_favorites(user_id):
     """returns all user favorites"""

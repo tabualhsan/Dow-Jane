@@ -54,6 +54,7 @@ function favorite_table(){
 }
 
 
+
 function favorite(evt){
     evt.preventDefault();
     $("#not_favorite").hide();
@@ -63,6 +64,18 @@ function favorite(evt){
     console.log(stock_id);
 
     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
+
+ };
+
+
+
+ function delete_stock_user(evt){
+     evt.preventDefault();
+     $("#favorited").show();
+
+
+    $.post('/delete_favorite',favs , favorite );
+
 
  };
 // const messages = {
@@ -104,5 +117,6 @@ function favorite(evt){
 
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
+$("#user_favorite").on('click', delete_stock_user);
 $(document).ready(favorite_table());
 // $(".toggle-info").load('/api/stocks?symbol=A'); 

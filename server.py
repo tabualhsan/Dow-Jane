@@ -168,19 +168,26 @@ def get_user_favorite():
     # return json.dumps(favs)
     return jsonify(favs)
 
-@app.route("/delete_favorite.json", methods=['POST'])
+@app.route("/delete_favorite", methods=['POST'])
 def delete_stock_json():
+    if "user" in session: 
+        user_id = session['user']
+        stock_id= request.form.get("stock_id")
+        print(stock_id)
+        crud.delete_stock_user(user_id, stock_id)
 
-    user_id = session['user']
+    return redirect('/stocks')
+
+# @app.route('/stocks/<stock_id>', method=['POST'])
+# def show_favorite_info():
+#     if "user" in session: 
+#         user_id = session['user']
+
+#         stock_id=request.form.get("stock_id")
 
 
-    favs = request.get_json()
-    stock_id = favs.get("stock_id")
+#     return redirect('/stocks')
 
-
-    crud.delete_stock_user(user_id, stock_id)
-
-    return jsonify({"delete": "Completed"})
 
 
 
