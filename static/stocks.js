@@ -69,15 +69,17 @@ function favorite(evt){
 
 
 
- function delete_stock_user(evt){
-     evt.preventDefault();
-     $("#favorited").show();
+ function delete_favorite(evt){
+    evt.preventDefault();
+    $("#favorited").hide();
+    $("#not_favorite").show();
 
+    var stock_id = $('#StockID').text();
 
-    $.post('/delete_favorite',favs , favorite );
-
+    $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
 
  };
+
 // const messages = {
 //     "EPS": "Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. ",
 //     "Dividend Yield": "The ratio of the company's annual dividend compared to its share price.",
@@ -117,6 +119,6 @@ function favorite(evt){
 
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
-$("#user_favorite").on('click', delete_stock_user);
+$("#favorited").on('click', delete_favorite);
 $(document).ready(favorite_table());
 // $(".toggle-info").load('/api/stocks?symbol=A'); 

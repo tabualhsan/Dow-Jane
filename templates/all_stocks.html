@@ -17,7 +17,6 @@
             <input type="submit">
         </form>
     </div>
-    <form action=/delete_favorite method= "post" id="remove_fav"></form>
     
      <h3>Favorites</h3> 
     <section id="display-favorites"></section>
@@ -29,7 +28,7 @@
             {% for fav in favs %}
                 
 
-                <ul><button value="{{fav[0]}}"formaction='/delete_favorite' formmethod="post" name="stock_id" id="stock_id" form="remove_fav" type="submit">Remove</button><a href="">{{fav[1]}}</a></ul>
+                <ul><a href="/stocks?symbol={{fav[2]}}">{{fav[1]}}</a></ul>
 
 
             {% endfor %}
@@ -37,7 +36,6 @@
 
         </d1>
     </div>
-    </form>
 
     <div id="favorite-table"></div>
     <section id="display-company-info"></section>

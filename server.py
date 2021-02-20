@@ -96,7 +96,7 @@ def stocks():
     user = session["user"]
     stock_list = Stock.query.all()
     # favs = UserFavorite.query.filter_by(user_id=user).all()
-    favs = db.session.query(UserFavorite.stock_id,Stock.stock_name).filter_by(user_id = user).join(Stock).all()
+    favs = db.session.query(UserFavorite.stock_id,Stock.stock_name, Stock.symbol).filter_by(user_id = user).join(Stock).all()
     print(favs)
 
     return render_template('all_stocks.html', stock_list=stock_list, favs=favs)
@@ -168,7 +168,7 @@ def get_user_favorite():
     # return json.dumps(favs)
     return jsonify(favs)
 
-@app.route("/delete_favorite", methods=['POST'])
+@app.route("/api/delete_favorite", methods=['POST'])
 def delete_stock_json():
     if "user" in session: 
         user_id = session['user']
