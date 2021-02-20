@@ -114,11 +114,19 @@ def get_stock():
     res = requests.get(url)
 
     stock= Stock.query.filter_by(symbol= symbol).first()
-    # print(stock.stock_id)
 
+    faved= UserFavorite.query.filter_by(stock_id= stock.stock_id).first()
+
+    if faved == None:
+        faved = False
+    else:
+        faved = True 
+    print(faved)
     json_response = res.json()
 
-    json_response.update({"StockID": stock.stock_id, "WomenLead": stock.women_lead})
+    json_response.update({"StockID": stock.stock_id, "WomenLead": stock.women_lead, "UserFaved":faved})
+
+
     
     
     if symbol:

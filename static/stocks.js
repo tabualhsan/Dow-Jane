@@ -1,15 +1,30 @@
 "use strict";
 
 function get_stock_info(evt){
-
     evt.preventDefault();
 
     let symbol = $("#stock_symbol").val();
+
 
     $.get('/api/stock?symbol='+ symbol, updateInfo);
 
 
 }
+
+
+function load_page(){
+
+
+    let symbol = getUrlParameter('stock');
+
+    if (symbol != false) {
+
+        $.get('/api/stock?symbol='+ symbol, updateInfo);
+    }
+
+}
+
+
 
 function get_women_lead(evt){
 
@@ -37,6 +52,12 @@ function updateInfo(results){
     $('#52WeekHigh').html(results["52WeekHigh"]);
     $('#52WeekLow').html(results["52WeekLow"]);
     $('#EPS').html(results.EPS);
+    
+    if (results["UserFaved"] == true) {
+        $("#not_favorite").hide();
+        $("#favorited").show();
+
+    } 
 
 };
 
@@ -117,8 +138,25 @@ function favorite(evt){
     // };
 
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+    return false;
+};
+
+
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
 $("#favorited").on('click', delete_favorite);
 $(document).ready(favorite_table());
-// $(".toggle-info").load('/api/stocks?symbol=A'); 
+$(document).ready(load_page); 

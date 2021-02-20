@@ -6,7 +6,7 @@
   <h1>Stock App</h1>
     <div>
         <h2>Stocks</h2>
-        <form id = "stock_select">
+        <form id = "stock_select" action="/stocks">
             <select name="stocks" id="stock_symbol">
                 <option default>Pick your stock</option>
 
@@ -26,9 +26,7 @@
             
             <dd id="user_favorites"></dd>
             {% for fav in favs %}
-                
-
-                <ul><a href="/stocks?symbol={{fav[2]}}">{{fav[1]}}</a></ul>
+                <a href="/stocks?stock={{fav[2]}}" id="favorited_stock" value="{{fav[2]}}">{{fav[1]}} ({{fav[2]}})</a><br>
 
 
             {% endfor %}
