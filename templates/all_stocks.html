@@ -12,6 +12,7 @@
 
                 {% for stock in stock_list %}
                     <option value="{{stock.symbol}}">{{stock.symbol}} - {{ stock.stock_name }}</option>
+                    
                 {% endfor %}
             </select>
             <input type="submit">
@@ -38,12 +39,12 @@
     <div id="favorite-table"></div>
     <section id="display-company-info"></section>
     <div class="company_info" id="company_info" hidden>
-        <button type="button"  id="not_favorite" class="bi bi-heart"></button>
+        <button type="like-button"  id="not_favorite" class="bi bi-heart"></button>
         <button class="bi bi-heart-fill" id="favorited" hidden></button>
     
         <dl>
             <dd id="StockID" hidden></dd> 
-            <dt>Name:</dt>
+            <dt><a href="#name_modal" rel="modal:open" >Name:</a></dt>
             <dd id="Name"></dd>  
             <dt><a href="#symbol_modal" rel="modal:open">Symbol:</a></dt>
             <dd id="Symbol_ticker"></dd>  
@@ -84,6 +85,9 @@
 
     <div id="symbol_modal" class="modal">
         <p>A ticker symbol or stock symbol is an abbreviation used to uniquely identify publicly traded shares of a particular stock on a particular stock market. A stock symbol may consist of letters, numbers or a combination of both.</p>
+    </div>
+    <div id="name_modal" class="modal">
+        <p>The address of headquarter for this company.</p>
     </div>
     <div id="DividendYield_modal" class="modal">
         <p>The ratio of the company's annual dividend compared to its share price.</p>

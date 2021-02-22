@@ -155,8 +155,21 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 
+// Get the modal
+function new_user(){
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    }
+
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
 $("#favorited").on('click', delete_favorite);
 $(document).ready(favorite_table());
-$(document).ready(load_page); 
+$(document).ready(load_page);
+$("#modal").on('click',new_user);
