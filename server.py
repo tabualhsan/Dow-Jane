@@ -89,7 +89,7 @@ def check_login():
         flash("Email or password do not match. Try again!")
         return redirect("/")
 
-# stock info================================================================================    
+# ===============================stock info=================================
 
 @app.route('/stocks')
 def stocks():
@@ -97,7 +97,6 @@ def stocks():
     stock_list = Stock.query.all()
     # favs = UserFavorite.query.filter_by(user_id=user).all()
     favs = db.session.query(UserFavorite.stock_id,Stock.stock_name, Stock.symbol).filter_by(user_id = user).join(Stock).all()
-    print(favs)
 
     return render_template('all_stocks.html', stock_list=stock_list, favs=favs)
 
@@ -162,7 +161,7 @@ def set_favorites():
     
     print(stock_id, user_id)
    
-    return render_template('favorite_stock.html', user_id=user_id, user_favorite=user_favorite)
+    return "200"
 
 @app.route('/api/userfavorite',methods = ['GET'])
 def get_user_favorite():

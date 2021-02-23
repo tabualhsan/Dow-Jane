@@ -33,7 +33,6 @@ function get_women_lead(evt){
 function updateInfo(results){
     $(".company_info").show();
     $("#StockID").html(results.StockID);
-    console.log(results.StockID);
     $('#Name').html(results.Name);    
     $('#Symbol_ticker').html(results.Symbol);
     $('#Description').html(results.Description);      
@@ -62,19 +61,6 @@ function updateInfo(results){
 };
 
 
-function favorite_table(){
-
-    var favs = ($.get('/api/userfavorite'));
-    // console.log(favs[1]);
-    
-    $("#user_favorites").html(favs);
-
-
-
-
-}
-
-
 
 function favorite(evt){
     evt.preventDefault();
@@ -82,7 +68,6 @@ function favorite(evt){
     $("#favorited").show();
 
     var stock_id = $('#StockID').text();
-    console.log(stock_id);
 
     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
 
@@ -100,6 +85,17 @@ function favorite(evt){
     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
 
  };
+
+ 
+function favorite_table(){
+    $.get( '/api/userfavorite', function( data ) {
+        let favs = data; // HTML content of the jQuery.ajax page
+        console.log(favs);
+        $("#user_favorites").append("<a href='/'>Ahmad</a>");  
+    });
+
+};
+
 
 // const messages = {
 //     "EPS": "Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. ",
@@ -170,6 +166,7 @@ function new_user(){
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
 $("#favorited").on('click', delete_favorite);
+// $('#user_favorites').load('/stocks')
 $(document).ready(favorite_table());
 $(document).ready(load_page);
 $("#modal").on('click',new_user);
