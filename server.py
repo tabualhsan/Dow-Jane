@@ -146,7 +146,20 @@ def get_price():
     else:
         return jsonify({"status": 'error','message': 'No price found about this stock' })
 
+@app.route('/api/monthly', methods=['GET'])
+def get_monthly():
+
+    symbol =request.args['symbol']
+
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol={symbol}&apikey={API_KEY}'
+    res = requests.get(url)
+    json_response = res.json()
+
     
+    if symbol:
+        return json_response
+    else:
+        return jsonify({"status": 'error','message': 'No montly price found about this stock' })
 
 # favorite info================================================================================    
 

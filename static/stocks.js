@@ -22,6 +22,7 @@ function load_page(){
         $.get('/api/stock?symbol='+ symbol, updateInfo);
     }
     get_price();
+    getMonths();
 
 }
 
@@ -40,11 +41,41 @@ function get_price(){
     }
         
         );
-        
     }
 
-
 }
+
+
+function getMonths() {
+
+    let symbol = getUrlParameter('symbol');
+
+    if (symbol != false) {
+
+    var months = [];
+    $.get('/api/monthly?symbol='+ symbol, (monthlyPrice) =>{
+        for (i = 0; i < 12; i++) {
+            var months = [];
+            var month =moment()(monthlyPrice["Monthly Time Series"][Object.keys(price["Monthly Time Series"])[0]]["4. close"]).subtract(i, 'months');
+            months.push(month);
+            console.log('hellllllllllllllO');
+        }
+        return months.reverse();
+
+
+    })
+  
+}}
+
+// var dateFormat = 'DD\/MM\/YYYY';
+// var data = [];
+// for (var i in d) {
+//   	date = moment(d[i].date, dateFormat);
+//     data.push({
+//       t: date.valueOf(),
+//       y: d[i].price
+//     });
+// }
 function updateInfo(results){
     $(".company_info").show();
     $("#StockID").html(results.StockID);
