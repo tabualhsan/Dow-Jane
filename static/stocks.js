@@ -39,10 +39,6 @@ function get_price(){
         $("#price").html(last_price);
     }
         
-
-        
-        
-        
         );
         
     }
