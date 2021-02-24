@@ -21,12 +21,31 @@ function load_page(){
 
         $.get('/api/stock?symbol='+ symbol, updateInfo);
     }
+    get_price();
 
 }
 
 
 
-function get_women_lead(evt){
+function get_price(){
+
+    let symbol = getUrlParameter('symbol');
+
+    
+    if (symbol != false) {
+
+        $.get('/api/price?symbol='+ symbol, (price) => {
+        var last_price = (price["Time Series (1min)"][Object.keys(price["Time Series (1min)"])[0]][ "1. open"]);
+        $("#price").html(last_price);
+    }
+        
+
+        
+        
+        
+        );
+        
+    }
 
 
 }

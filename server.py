@@ -132,20 +132,19 @@ def get_stock():
         return jsonify({"status": 'error','message': 'No information found about this stock' })
 
     
-# @app.route('/api/price')
-# def get_price():
+@app.route('/api/price', methods=['GET'])
+def get_price():
 
-#     symbol = request.args.get('symbol')
+    symbol = request.args['symbol']
+    print(symbol)
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=1min&outputsize=compact&apikey={API_KEY}'
+    res = requests.get(url)
+    json_response = res.json()
 
-#     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&outputsize=full&apikey={API_KEY}'
-#     res = request.get(url)
-
-#     stock = Stock.query.filter_by(symbol=symbol).first()
-
-#     if symbol:
-#         return json_response
-#     else:
-#         return jsonify({"status": 'error','message': 'No information found about this stock' })
+    if symbol:
+        return json_response
+    else:
+        return jsonify({"status": 'error','message': 'No price found about this stock' })
 
     
 
