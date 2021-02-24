@@ -25,11 +25,11 @@
         <d1>    
             <dt>My Favorites:</dt>
             
-            <dd id="user_favorites"></dd>
+            <dd id="user_favorites">
+               
+            </dd>
             {% for fav in favs %}
-                <a href="/stocks?stock={{fav[2]}}" id="favorited_stock" value="{{fav[2]}}">{{fav[1]}} ({{fav[2]}})</a><br>
-
-
+            
             {% endfor %}
 
 
@@ -38,7 +38,7 @@
 
     <div id="favorite-table"></div>
     <div class="company_info" id="company_info" hidden>
-        <button type="like-button"  id="not_favorite" class="bi bi-heart"></button>
+        <button type="like_button"  id="not_favorite" class="bi bi-heart" ></button>
         <button class="bi bi-heart-fill" id="favorited" hidden></button>
     
         <dl>

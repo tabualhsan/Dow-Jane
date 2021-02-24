@@ -15,7 +15,7 @@ function get_stock_info(evt){
 function load_page(){
 
 
-    let symbol = getUrlParameter('stock');
+    let symbol = getUrlParameter('symbol');
 
     if (symbol != false) {
 
@@ -64,6 +64,7 @@ function updateInfo(results){
 
 function favorite(evt){
     evt.preventDefault();
+    
     $("#not_favorite").hide();
     $("#favorited").show();
 
@@ -77,6 +78,8 @@ function favorite(evt){
 
  function delete_favorite(evt){
     evt.preventDefault();
+    
+
     $("#favorited").hide();
     $("#not_favorite").show();
 
@@ -84,17 +87,34 @@ function favorite(evt){
 
     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
 
+    // $('element').load('/get_content')
+  
+
  };
 
  
 function favorite_table(){
-    $.get( '/api/userfavorite', function( data ) {
-        let favs = data; // HTML content of the jQuery.ajax page
-        console.log(favs);
-        $("#user_favorites").append("<a href='/'>Ahmad</a>");  
-    });
+    // console.log("we're in the favorite_table now")
+    // var favs = ($.get('/api/userfavorite'));
+    //     console.log(favs);
 
+    $.get('/api/userfavorite', (favs) => {
+        var favs_length = favs.length;
+        $("#user_favorites").html("");
+        for (var i = 0; i < favs_length; i++) {
+            console.log(favs[i]);
+            $("#user_favorites").append("<ul><a href ='/stocks?symbol="+favs[i][2]+"'>"+favs[i][1]+"</a></ul>");
+    
+        };
+        
+    });
+    
 };
+
+// $('#button').click(function(){
+
+//     $('#user_favorties').load(favs);
+// }
 
 
 // const messages = {
@@ -166,7 +186,7 @@ function new_user(){
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
 $("#favorited").on('click', delete_favorite);
-// $('#user_favorites').load('/stocks')
+// $('#user_favorites').load(favorite_table);
 $(document).ready(favorite_table());
 $(document).ready(load_page);
 $("#modal").on('click',new_user);

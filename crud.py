@@ -52,25 +52,26 @@ def check_password(email, password):
 
 API_KEY = '3LOOI2SBODXLNS10'
 
-def create_stock_info(symbol, name, description, ceo, headquarters, founded, employees, address, sector, exchange, asset_type):
-    """create a stocks profile"""
-    stock = Stock(symbol=symbol, 
-                name=name,
-                description=description, 
-                founded=founded,
-                employees=employees,
-                exchange=exchange, 
-                asset_type=asset_type)
+# def create_stock_info(symbol, name, description, ceo, headquarters, founded, employees, address, sector, exchange, asset_type):
+#     """create a stocks profile"""
+#     stock = Stock(symbol=symbol, 
+#                 name=name,
+#                 description=description, 
+#                 founded=founded,
+#                 employees=employees,
+#                 exchange=exchange, 
+#                 asset_type=asset_type)
 
-    db.session.add(stock)
-    db.session.commit()
+#     db.session.add(stock)
+#     db.session.commit()
 
-    return stock
+#     return stock
 
 
 
 
 def get_all_stocks():
+    """Get stock name info from AA API to store in db """
         
     url = 'https://www.alphavantage.co/query?function=LISTING_STATUS&apikey='+ API_KEY
     res = requests.get(url)
@@ -86,6 +87,7 @@ def get_all_stocks():
 
 
 def save_stocks(all_stocks):
+    """save all stocks (names, symbol, women_lead etc.. ) in the database from AA API  """
     women_lead = ['GM', 'BBY', 'ANTM','HSY','VTR','ORCL','TPR','ULTA','NDAQ', 'DUK','PGR','OXY','BEN','SYF', 'VRTX','CDW', 'CUS','OTIS','REG', 'ZTS', 'CLX', 'ROST','CE','AMD','ACN','GPS','UPS','ANET','NOC']
 
     count = 0
@@ -101,16 +103,14 @@ def save_stocks(all_stocks):
         count += 1
 
     return "Finished"
-def get_stock():
-
-    return StockInfo.query.all()
 
 
 
 
-# favorite info ================================================================
+
+# ============================favorite info ===============================================
 def create_favorites(user_id, stock_id):
-    """create a and returns user favorites from stocks list """
+    """create and returns user favorites from stocks list """
 
     userFavorites = UserFavorite(
                     user_id = user_id,
@@ -123,22 +123,19 @@ def create_favorites(user_id, stock_id):
     return userFavorites
 
 def delete_stock_user(user_id, stock_id):
-        fav_obj = db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
-        print(fav_obj)
+    """delete from database when user unfavorites stock"""
+    fav_obj = db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
+    print(fav_obj)
 
-        db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
-        db.session.delete(fav_obj)
-        db.session.commit()
-        
+    db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
+    db.session.delete(fav_obj)
+    db.session.commit()
+    
 
 def user_favorites(user_id):
     """returns all user favorites"""
     favs = UserFavorite.query.filter(user_id=user_id).all()
-    # [<favObj=APPL>, <favObj=BBB>]
-    # stock_id = favs[0].stock_id -> 'AAPL'
-    # favs.stock -> all stocks associated with this user_id
-    # favs.user -> all users associated with this user_id
-    
+
 
     db.session.add(favs)
     db.session.commit()
