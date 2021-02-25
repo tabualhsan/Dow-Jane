@@ -22,7 +22,6 @@ function load_page(){
         $.get('/api/stock?symbol='+ symbol, updateInfo);
     }
     get_price();
-    getMonths();
 
 }
 
@@ -36,8 +35,24 @@ function get_price(){
     if (symbol != false) {
 
         $.get('/api/price?symbol='+ symbol, (price) => {
-        var last_price = (price["Time Series (1min)"][Object.keys(price["Time Series (1min)"])[0]][ "1. open"]);
-        $("#price").html(last_price);
+
+        var last_price = (price["Time Series (1min)"][Object.keys(price["Time Series (1min)"])[0]][ "4. close"]);
+        var dates = [];
+        var pricesClose = [];
+        const months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+        for (let i = 0; i< 12; i++){
+            
+            let key = last_price[i]
+            console.log('key','last_price')
+            pricesClose.push(last_price)
+            dates.push(months)
+            console.log(pricesClose)
+        displayChart(symbol,dates,pricesClose)
+
+
+
+        }
     }
         
         );
@@ -45,6 +60,33 @@ function get_price(){
 
 }
 
+function displayChart(symbol,dates,pricesClose){
+
+    let labels = dates.reverse();
+    let data = pricesClose.reverse();
+    let myChart = document.getElementById('myChart').getContext('2d');
+    let stockChart = new Chart(myChart ,{
+        type: 'line',
+        data:{
+            labels: labels,
+            datasets: [{
+
+                label : symbol,
+                borderColor: 'rgb(255, 99, 132)',
+                data: data,
+                lineTension: 0,
+
+
+            }]
+        },
+        options: {}
+    });
+
+
+
+
+
+}
 
 function getMonths() {
 
@@ -53,29 +95,14 @@ function getMonths() {
     if (symbol != false) {
 
     var months = [];
-    $.get('/api/monthly?symbol='+ symbol, (monthlyPrice) =>{
-        for (i = 0; i < 12; i++) {
-            var months = [];
-            var month =moment()(monthlyPrice["Monthly Time Series"][Object.keys(price["Monthly Time Series"])[0]]["4. close"]).subtract(i, 'months');
-            months.push(month);
-            console.log('hellllllllllllllO');
-        }
-        return months.reverse();
-
-
-    })
-  
+    $.get('/api/monthly?symbol='+ symbol)
+    for (i = 0; i < 12; i++) {
+        var month = moment().subtract(i, 'months').format('MMMM Y');
+        months.push(month);
+    }
+    return months.reverse();
 }}
 
-// var dateFormat = 'DD\/MM\/YYYY';
-// var data = [];
-// for (var i in d) {
-//   	date = moment(d[i].date, dateFormat);
-//     data.push({
-//       t: date.valueOf(),
-//       y: d[i].price
-//     });
-// }
 function updateInfo(results){
     $(".company_info").show();
     $("#StockID").html(results.StockID);
