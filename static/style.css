@@ -172,3 +172,23 @@ dt {
 
 }
 
+body {
+  /*   font-family: sans-serif; */
+  }
+  
+  #duration {
+    display:block;
+    margin: 0;
+    width:37%;
+  }
+  
+  datalist {
+    display: table;
+    table-layout: fixed; 
+    width: 40%;
+  }
+  
+  option {
+    display: table-cell;
+  }
+

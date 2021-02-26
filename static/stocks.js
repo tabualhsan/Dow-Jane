@@ -22,6 +22,8 @@ function load_page(){
         $.get('/api/stock?symbol='+ symbol, updateInfo);
     }
     get_price();
+    
+    
 
 }
 
@@ -35,73 +37,43 @@ function get_price(){
     if (symbol != false) {
 
         $.get('/api/price?symbol='+ symbol, (price) => {
-
-        var last_price = (price["Time Series (1min)"][Object.keys(price["Time Series (1min)"])[0]][ "4. close"]);
-        var dates = [];
-        var pricesClose = [];
-        const months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-
-        for (let i = 0; i< 12; i++){
-            
-            let key = last_price[i]
-            console.log('key','last_price')
-            pricesClose.push(last_price)
-            dates.push(months)
-            console.log(pricesClose)
-        displayChart(symbol,dates,pricesClose)
-
-
-
-        }
+        var last_price = (price["Time Series (1min)"][Object.keys(price["Time Series (1min)"])[0]][ "1. open"]);
+        $("#price").html(last_price);
     }
-        
+
         );
+        console.log(price);
     }
 
-}
-
-function displayChart(symbol,dates,pricesClose){
-
-    let labels = dates.reverse();
-    let data = pricesClose.reverse();
-    let myChart = document.getElementById('myChart').getContext('2d');
-    let stockChart = new Chart(myChart ,{
-        type: 'line',
-        data:{
-            labels: labels,
-            datasets: [{
-
-                label : symbol,
-                borderColor: 'rgb(255, 99, 132)',
-                data: data,
-                lineTension: 0,
-
-
-            }]
-        },
-        options: {}
-    });
-
-
-
-
 
 }
 
-function getMonths() {
+
+
+function get_monthly(){
 
     let symbol = getUrlParameter('symbol');
+    var dates = [];
+    var pricesClose = [];
 
     if (symbol != false) {
+        $.get('/api/monthly?symbol='+ symbol, (monthly_price) => {    
 
-    var months = [];
-    $.get('/api/monthly?symbol='+ symbol)
-    for (i = 0; i < 12; i++) {
-        var month = moment().subtract(i, 'months').format('MMMM Y');
-        months.push(month);
-    }
-    return months.reverse();
-}}
+            const months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+            for (let i=0; i<12; i++) {
+            
+                var stock_monthly_price = (monthly_price["Monthly Time Series"][Object.keys(monthly_price["Monthly Time Series"])[i]][ "4. close"]);
+                pricesClose.push({x: stock_monthly_price});
+                dates.push({y:months});
+                }
+        
+            console.log({dates});
+            console.log({pricesClose});
+        })
+    };
+    return {dates:dates, pricesClose: pricesClose};
+}
 
 function updateInfo(results){
     $(".company_info").show();

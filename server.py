@@ -17,6 +17,7 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
 API_KEY = '3LOOI2SBODXLNS10'
+# API_KEY = 'ZO82S3K3BPAFSNSX'
 
 
 
@@ -157,7 +158,10 @@ def get_monthly():
 
     
     if symbol:
+        print("***************************")
+        print(json_response)
         return json_response
+    
     else:
         return jsonify({"status": 'error','message': 'No montly price found about this stock' })
 
