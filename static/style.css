@@ -192,3 +192,10 @@ body {
     display: table-cell;
   }
 
+#stock-chart {
+  width: 100px; !important
+  height: 500px;
+
+
+}
+
