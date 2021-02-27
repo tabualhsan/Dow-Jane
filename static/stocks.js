@@ -42,7 +42,7 @@ function get_price(){
     }
 
         );
-        console.log(price);
+        // console.log(price);
     }
 
 
@@ -53,8 +53,8 @@ function get_price(){
 function get_monthly(){
 
     let symbol = getUrlParameter('symbol');
-    var dates = [];
-    var pricesClose = [];
+    var data = [];
+    // var pricesClose = [];
 
     if (symbol != false) {
         $.get('/api/monthly?symbol='+ symbol, (monthly_price) => {    
@@ -64,15 +64,18 @@ function get_monthly(){
             for (let i=0; i<12; i++) {
             
                 var stock_monthly_price = (monthly_price["Monthly Time Series"][Object.keys(monthly_price["Monthly Time Series"])[i]][ "4. close"]);
-                pricesClose.push({x: stock_monthly_price});
-                dates.push({y:months});
+                // pricesClose.push({x: stock_monthly_price});
+                let key = stock_monthly_price[i];
+                // console.log('key',stock_monthly_price)
+                data.push({y: months[key] , x: stock_monthly_price });
                 }
         
-            console.log({dates});
-            console.log({pricesClose});
+            // console.log(data);
+            // console.log({pricesClose});
         })
     };
-    return {dates:dates, pricesClose: pricesClose};
+    // return {dates:dates, pricesClose: pricesClose};
+    return {data:data};
 }
 
 function updateInfo(results){
@@ -147,7 +150,7 @@ function favorite_table(){
         var favs_length = favs.length;
         $("#user_favorites").html("");
         for (var i = 0; i < favs_length; i++) {
-            console.log(favs[i]);
+            // console.log(favs[i]);
             $("#user_favorites").append("<ul><a href ='/stocks?symbol="+favs[i][2]+"'>"+favs[i][1]+"</a></ul>");
     
         };
@@ -231,7 +234,6 @@ function new_user(){
 $("#stock_select").on('submit', get_stock_info);
 $("#not_favorite").on('click', favorite);
 $("#favorited").on('click', delete_favorite);
-// $('#user_favorites').load(favorite_table);
+$("#modal").on('click',new_user);
 $(document).ready(favorite_table());
 $(document).ready(load_page);
-$("#modal").on('click',new_user);

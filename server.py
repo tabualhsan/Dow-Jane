@@ -17,7 +17,7 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
 API_KEY = '3LOOI2SBODXLNS10'
-# API_KEY = 'ZO82S3K3BPAFSNSX'
+
 
 
 
@@ -163,7 +163,7 @@ def get_monthly():
         return json_response
     
     else:
-        return jsonify({"status": 'error','message': 'No montly price found about this stock' })
+        return jsonify({"status": 'error','message': 'No monthly price found about this stock' })
 
 # favorite info================================================================================    
 
@@ -192,7 +192,7 @@ def set_favorites():
     
     print(stock_id, user_id)
    
-    return redirect('/stocks?stock=')
+    return redirect('/stocks?symbol=')
 
 @app.route('/api/userfavorite',methods = ['GET'])
 def get_user_favorite():
@@ -217,7 +217,7 @@ def delete_stock_json():
         print(stock_id)
         crud.delete_stock_user(user_id, stock_id)
 
-    return redirect('/stocks?stock=')
+    return redirect('/stocks?symbol=')
 
 # @app.route('/stocks/<stock_id>', method=['POST'])
 # def show_favorite_info():
