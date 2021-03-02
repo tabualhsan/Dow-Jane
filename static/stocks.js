@@ -49,35 +49,6 @@ function get_price(){
 }
 
 
-
-function get_monthly(){
-
-    let symbol = getUrlParameter('symbol');
-    var data = [];
-    // var pricesClose = [];
-
-    if (symbol != false) {
-        $.get('/api/monthly?symbol='+ symbol, (monthly_price) => {    
-
-            const months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-            for (let i=0; i<12; i++) {
-            
-                var stock_monthly_price = (monthly_price["Monthly Time Series"][Object.keys(monthly_price["Monthly Time Series"])[i]][ "4. close"]);
-                // pricesClose.push({x: stock_monthly_price});
-                let key = stock_monthly_price[i];
-                // console.log('key',stock_monthly_price)
-                data.push({y: months[key] , x: stock_monthly_price });
-                }
-        
-            // console.log(data);
-            // console.log({pricesClose});
-        })
-    };
-    // return {dates:dates, pricesClose: pricesClose};
-    return {data:data};
-}
-
 function updateInfo(results){
     $(".company_info").show();
     $("#StockID").html(results.StockID);
@@ -109,9 +80,18 @@ function updateInfo(results){
 };
 
 
+// $("#like").on("click", function() {
+//     console.log("Hello");
+//     $(this).toggleClass("bi-heart bi-heart-fill");
+//     // $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
+
+//   });
+  
 
 function favorite(evt){
     evt.preventDefault();
+
+    console.log("Hello");
     
     $("#not_favorite").hide();
     $("#favorited").show();
@@ -126,7 +106,7 @@ function favorite(evt){
 
  function delete_favorite(evt){
     evt.preventDefault();
-    
+    console.log("Hello");
 
     $("#favorited").hide();
     $("#not_favorite").show();
@@ -159,47 +139,6 @@ function favorite_table(){
     
 };
 
-// $('#button').click(function(){
-
-//     $('#user_favorties').load(favs);
-// }
-
-
-// const messages = {
-//     "EPS": "Earnings Per Share (EPS) - is defined as Net Income divided by the total number of outstanding shares. This measure tells you the accounting profit of the company that each share is entitled to. ",
-//     "Dividend Yield": "The ratio of the company's annual dividend compared to its share price.",
-//     "Dividend Per Share" : "The sum of declared dividends issued by a company for every ordinary share outstanding.",
-//     "PERRatio": "The ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS). The price-to-earnings ratio is also sometimes known as the price multiple or the earnings multiple.",
-//     "PEGratio": "The 'PEG ratio' (price/earnings to growth ratio) is a valuation metric for determining the relative trade-off between the price of a stock, the earnings generated per share (EPS), and the company's expected growth. In general, the P/E ratio is higher for a company with a higher growth rate.",
-//     "52WeekHigh": "The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year.",
-//     "52WeekLow": "The 52-week high/low is the highest and lowest price at which a security, such as a stock, has traded during the time period that equates to one year."
-
-// };
-// function wordDef(e){
-    
-//     console.log(e.target);
-    
-  
-// };
-
-
-
-// function wordDef(e){
-    // console.log(e)
-    // // $(".content").on("click", "span", function(e) {
-    //     e.stopPropagation();
-    //     var $this = $(this);
-    //     word = $this.text();
-
-    //     var dialogContent = messages[_text.toLowerCase()];
-    //     if (dialogContent && dialogContent.length > 0) {
-    //     $("#dialog").dialog({
-    //         "modal": true,
-    //         "title": word
-    //     }).html(dialogContent);
-    //     }
-    // // });
-    // };
 
 
 var getUrlParameter = function getUrlParameter(sParam) {

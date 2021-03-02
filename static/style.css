@@ -1,7 +1,7 @@
 
 .container {
     font-family: sans-serif;
-    background: #42455a;  
+    background:wh;  
     width: 100%;
     height:100%;
 }
@@ -172,30 +172,31 @@ dt {
 
 }
 
-body {
-  /*   font-family: sans-serif; */
-  }
-  
-  #duration {
-    display:block;
-    margin: 0;
-    width:37%;
-  }
-  
-  datalist {
-    display: table;
-    table-layout: fixed; 
-    width: 40%;
-  }
-  
-  option {
-    display: table-cell;
-  }
+
+#duration {
+  display:block;
+  margin: 0;
+  width:37%;
+}
+
+datalist {
+  display: table;
+  table-layout: fixed; 
+  width: 40%;
+}
+
+option {
+  display: table-cell;
+}
 
 #stock-chart {
-  width: 100px; !important
-  height: 500px;
+width: 100px; !important
+height: 500px;
 
 
 }
 
+.heart {
+  font-size: 25px;
+	color:red;
+}

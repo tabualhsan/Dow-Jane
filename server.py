@@ -158,8 +158,6 @@ def get_monthly():
 
     
     if symbol:
-        print("***************************")
-        print(json_response)
         return json_response
     
     else:
