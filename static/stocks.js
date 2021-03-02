@@ -32,7 +32,7 @@ function load_page(){
 function get_price(){
 
     let symbol = getUrlParameter('symbol');
-
+    console.log($("#StockID").text())
     
     if (symbol != false) {
 
@@ -79,46 +79,97 @@ function updateInfo(results){
 
 };
 
+$('#testButton').toggle(function() { console.log('this will work') }, function() { console.log('did it work?')});
+
+// function favorites(evt){
+//     $('a.btn-favorite').on('click', function() {
+//         $(this).toggleClass('liked');
+//         $('.favorite-text,.unfavorite-text').toggle();
+//       });
+
+
+
+// }
 
 // $("#like").on("click", function() {
 //     console.log("Hello");
 //     $(this).toggleClass("bi-heart bi-heart-fill");
 //     // $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
 
-//   });
-  
+//   })
 
-function favorite(evt){
-    evt.preventDefault();
+// $("#not_favorite").toggle(function(){
 
-    console.log("Hello");
+
+//     console.log("favorite")
     
-    $("#not_favorite").hide();
-    $("#favorited").show();
+// }, function(){
 
-    var stock_id = $('#StockID').text();
+//     console.log("unfavorite")
 
-    $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
-
- };
+// })
 
 
 
- function delete_favorite(evt){
-    evt.preventDefault();
-    console.log("Hello");
+    $("#favorite").toggle(function(){
+        
+        console.log("favorite");
+        console.log(stock_id);
 
-    $("#favorited").hide();
-    $("#not_favorite").show();
 
-    var stock_id = $('#StockID').text();
+        var stock_id = $('#StockID').text();
 
-    $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
+        $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
+    },
+    function(){
+        
+        
+        console.log("unfavorite");
+        console.log(stock_id);
 
-    // $('element').load('/get_content')
+        var stock_id = $('#StockID').text();
+
+        $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
+
+
+
+    })
+
+
+
+
+// function favorite_button()
+// {function favorite(evt){
+//     evt.preventDefault();
+
+//     console.log("Hello");
+    
+//     $("#not_favorite").hide();
+//     $("#favorited").show();
+
+//     var stock_id = $('#StockID').text();
+
+//     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
+
+//  };};
+
+
+// function delete_button()
+//  {function delete_favorite(evt){
+//     evt.preventDefault();
+//     console.log("Hello");
+
+//     $("#favorited").hide();
+//     $("#not_favorite").show();
+
+//     var stock_id = $('#StockID').text();
+
+//     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
+
+//     // $('element').load('/get_content')
   
 
- };
+//  };};
 
  
 function favorite_table(){
@@ -169,10 +220,10 @@ function new_user(){
         }
     }
     }
-
 $("#stock_select").on('submit', get_stock_info);
-$("#not_favorite").on('click', favorite);
-$("#favorited").on('click', delete_favorite);
+// $("#not_favorite").on('click', favorite);
+// $("#favorited").on('click', delete_favorite);
 $("#modal").on('click',new_user);
 $(document).ready(favorite_table());
 $(document).ready(load_page);
+

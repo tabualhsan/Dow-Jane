@@ -1,6 +1,13 @@
+displayPrices();
 function displayPrices(){
   
-let duration = document.getElementById("duration").value;
+let duration = $("#duration").val();
+
+if (duration == null) {
+  duration = 12
+  
+}
+
 
 let symbol = getUrlParameter('symbol');
 
@@ -31,8 +38,8 @@ xmlhttp.send();
 }
 
 function displayChart(symbol, dates, pricesClose) {
-  let labels = dates.reverse();
-  let data = pricesClose.reverse();
+  let labels = dates;
+  let data = pricesClose;
   
   let ctx = document.getElementById('stock-chart').getContext('2d');
   let chart = new Chart(ctx, {
@@ -57,5 +64,3 @@ function displayChart(symbol, dates, pricesClose) {
       }
   });
 }
-
-displayPrices();
