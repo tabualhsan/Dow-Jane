@@ -43,12 +43,63 @@ function get_price(){
 
         );
         // console.log(price);
-    }
+    };
+
+ }
+
+// ("#like_button").click(function(){
+// $("#swapHeart").toggle(function(){
+
+//     var stock_id = $('#StockID').text();
+
+//     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
 
 
-}
 
 
+// }, function (){
+
+//     var stock_id = $('#StockID').text();
+
+//     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
+
+
+// })})
+
+
+jQuery(function($) {
+    $('#swapHeart').on('click', function() {
+      var $el = $(this),
+        textNode = this.lastChild;
+      $el.find('span').toggleClass('glyphicon-heart glyphicon-heart-empty');
+      
+      $el.toggleClass('swap');
+       
+    // $("#unHeart").hide();
+    // $("#swapHeart").show();
+      var stock_id = $('#StockID').text();
+
+      $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
+    $('#swapHeart').attr("id","unHeart")
+    });
+  });
+
+jQuery(function($) {
+$('#unHeart').on('click', function() {
+    var $el = $(this),
+    textNode = this.lastChild;
+    $el.find('span').toggleClass('glyphicon-empty glyphicon-heart-heart');
+    $el.toggleClass('swap');
+// $("#unHeart").show();
+// $("#swapHeart").hide();
+    var stock_id = $('#StockID').text();
+
+    $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
+    $('#unheart').attr("id","swapHeart")
+});
+});
+
+  
 function updateInfo(results){
     $(".company_info").show();
     $("#StockID").html(results.StockID);
@@ -79,67 +130,12 @@ function updateInfo(results){
 
 };
 
-$('#testButton').toggle(function() { console.log('this will work') }, function() { console.log('did it work?')});
-
-// function favorites(evt){
-//     $('a.btn-favorite').on('click', function() {
-//         $(this).toggleClass('liked');
-//         $('.favorite-text,.unfavorite-text').toggle();
-//       });
-
-
-
-// }
-
-// $("#like").on("click", function() {
-//     console.log("Hello");
-//     $(this).toggleClass("bi-heart bi-heart-fill");
-//     // $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
-
-//   })
-
-// $("#not_favorite").toggle(function(){
-
-
-//     console.log("favorite")
-    
-// }, function(){
-
-//     console.log("unfavorite")
-
-// })
-
-
-
-    $("#favorite").toggle(function(){
-        
-        console.log("favorite");
-        console.log(stock_id);
-
-
-        var stock_id = $('#StockID').text();
-
-        $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
-    },
-    function(){
-        
-        
-        console.log("unfavorite");
-        console.log(stock_id);
-
-        var stock_id = $('#StockID').text();
-
-        $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
-
-
-
-    })
 
 
 
 
-// function favorite_button()
-// {function favorite(evt){
+
+// function favorite(evt){
 //     evt.preventDefault();
 
 //     console.log("Hello");
@@ -151,11 +147,10 @@ $('#testButton').toggle(function() { console.log('this will work') }, function()
 
 //     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
 
-//  };};
+// };
 
 
-// function delete_button()
-//  {function delete_favorite(evt){
+//  function delete_favorite(evt){
 //     evt.preventDefault();
 //     console.log("Hello");
 
@@ -165,11 +160,11 @@ $('#testButton').toggle(function() { console.log('this will work') }, function()
 //     var stock_id = $('#StockID').text();
 
 //     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
-
+//  };
 //     // $('element').load('/get_content')
   
 
-//  };};
+
 
  
 function favorite_table(){
@@ -219,11 +214,88 @@ function new_user(){
             modal.style.display = "none";
         }
     }
-    }
-$("#stock_select").on('submit', get_stock_info);
-// $("#not_favorite").on('click', favorite);
-// $("#favorited").on('click', delete_favorite);
-$("#modal").on('click',new_user);
-$(document).ready(favorite_table());
-$(document).ready(load_page);
+    };
 
+
+    $("#stock_select").on('submit', get_stock_info);
+    // $("#not_favorite").on('click', favorite);
+    // $("#favorited").on('click', delete_favorite);
+    $("#modal").on('click',new_user);
+    $(document).ready(favorite_table());
+    $(document).ready(load_page);
+// *****************************************chart*******************************************************************
+
+displayPrices();
+function displayPrices(){
+
+let duration = $("#duration").val();
+
+if (duration == null) {
+duration = 12
+
+};
+
+console.log("hellll")
+
+let symbol = getUrlParameter('symbol');
+
+var xmlhttp = new XMLHttpRequest(),
+    url = `http://localhost:5000/api/monthly?symbol=${symbol}`;
+    console.log(url);
+
+xmlhttp.open('GET', url, true);
+xmlhttp.onload = function() {
+if (this.readyState == 4 && this.status == 200) {
+    let json=JSON.parse(this.responseText);
+    let keys = Object.keys(json['Monthly Time Series']);
+    var dates = [];
+    var pricesClose = [];
+    const months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+    for (let i=0; i<duration; i++) {
+    let key = keys[i];
+    pricesClose.push(json['Monthly Time Series'][key]['4. close']);
+    dates.push(months[Number(key.slice(5, 7) - 1)] + key.slice(2, 4));
+    }
+
+    displayChart(symbol, dates, pricesClose)
+}
+};
+xmlhttp.send();
+}
+
+function displayChart(symbol, dates, pricesClose) {
+let labels = dates;
+let data = pricesClose;
+
+let ctx = document.getElementById('stock-chart').getContext('2d');
+let chart = new Chart(ctx, {
+    
+    type: 'line',
+
+    
+    data: {
+        labels: labels,
+        datasets: [{
+            label: symbol,
+            borderColor: 'rgb(255, 99, 132)',
+            data: data,
+            lineTension: 0,
+        }]
+    },
+
+    
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+}
+
+// $("#stock_select").on('submit', get_stock_info);
+// // $("#not_favorite").on('click', favorite);
+// // $("#favorited").on('click', delete_favorite);
+// $("#modal").on('click',new_user);
+// $(document).ready(favorite_table());
+// $(document).ready(load_page);

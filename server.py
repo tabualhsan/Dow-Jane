@@ -40,16 +40,14 @@ def register_user():
 
     print(request.form)
 
-
-
     user_email = crud.get_user_by_email(email)
-    if user_email == None:
-        crud.create_user(email, password,first_name, last_name)
+    if not user_email:
+        crud.create_user(email, password, first_name, last_name)
         flash('Account created! Please log in.')
     else:
         flash('An account has already been used with this email, please login.')
 
-    return redirect('/')
+    return redirect('/users')
 
 @app.route("/users/<user_id>")
 def display_user_profile(user_id):
@@ -57,15 +55,15 @@ def display_user_profile(user_id):
 
     user_profile = crud.get_user_by_id(user_id)
 
-    return render_template("user_profile.html", user_profile=user_profile)
+    return render_template('homepage.html', user_profile=user_profile)
     
 @app.route('/users')
 def all_users():
     """View all users."""
 
-    users = crud.get_users()
+    users = crud.get_user()
 
-    return render_template('all_users.html', users=users)
+    return render_template('homepage.html', users=users)
 
 
 @app.route("/login", methods=['POST'])
@@ -80,7 +78,7 @@ def check_login():
     password_verification = crud.check_password(email, password)
 
     user_details = crud.get_user_by_email(email)
-
+    print(password_verification)
     if password_verification == True:
         session["user"] = user_details.user_id
         session["user_name"] = user_details.first_name

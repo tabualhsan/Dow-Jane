@@ -41,10 +41,10 @@ def check_password(email, password):
     """ Check password and email for logging in"""
 
     user= get_user_by_email(email)
-
-    if user == None:
+   
+    if not user:
         return False
-    elif user.password == password:
+    if user.password == password:
         return True
     else:
         return False
@@ -125,7 +125,7 @@ def create_favorites(user_id, stock_id):
 def delete_stock_user(user_id, stock_id):
     """delete from database when user unfavorites stock"""
     fav_obj = db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
-    print(fav_obj)
+    # print(fav_obj)
 
     db.session.query(UserFavorite).filter(UserFavorite.user_id == user_id,UserFavorite.stock_id == stock_id).first()
     db.session.delete(fav_obj)

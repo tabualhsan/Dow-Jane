@@ -16,7 +16,7 @@
                 {% endfor %}
             </select>
             <input class="btn btn-primary" type="submit" value="Submit">  
-            <button type= "button" id= "testButton" value="test">my button</button>  
+             
         </form>
     </div>
     
@@ -36,35 +36,44 @@
 
         </d1>
     </div>
-
-<title></title>
-<div class="container">
-    <h2>Stock Prices</h2>
-    <canvas id="stock-chart"width="100" height="100"></canvas>
-
-    <label for="spacing">Duration:</label>
-    <div class="slider">
-    <datalist id="steplist">
-        <option label="3" value="3">
-        <option label="6" value="6">
-        <option label="9" value="9">
-        <option label="12" value="12">
-        <option label="15" value="15">  
-        <option label="18" value="18">
-        <option label="21" value="21">
-        <option label="24" value="24">
-    </datalist>
-    <input onchange="displayPrices()" list="steplist" id="duration" type="range" min="3" max="24" step="3" value="12">  
-    </div>
+    <title></title>
+    <div class="container">
+        <h2>Stock Prices</h2>
+        <canvas id="stock-chart"width="100" height="100"></canvas>
+    
+        <label for="spacing">Duration:</label>
+        <div class="slider">
+        <datalist id="steplist">
+            <option label="3" value="3">
+            <option label="6" value="6">
+            <option label="9" value="9">
+            <option label="12" value="12">
+            <option label="15" value="15">  
+            <option label="18" value="18">
+            <option label="21" value="21">
+            <option label="24" value="24">
+        </datalist>
+        <input onchange="displayPrices()" list="steplist" id="duration" type="range" min="3" max="24" step="3" value="12">  
+        </div>
+      
     
 </div>
-<button type= "button" id= "testButton" value="test">my button</button>
+
+<div class="company_info" id="company_info"hidden >
+<button id="swapHeart" class="btn btn-default swap">
+<span id="unHeart" class="glyphicon glyphicon-heart-empty"></span>
+</button>
+
+
+    
 
 
 
 
-    <div class="company_info" id="company_info" >
-        <button type="button" id="favorite" class="bi bi-heart"></button>
+
+<!-- 
+        <button type="button" id="favorite" class="bi bi-heart">like button</button>
+        <button id="not_favorite" value="test ">unlike button</button> -->
 
     </div>
     <div>
@@ -158,8 +167,7 @@
 
     
  
-    <script src="/static/stocks.js"></script>
-
+   
 {% endblock %}
 
 
