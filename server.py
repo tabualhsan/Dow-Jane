@@ -6,6 +6,8 @@ from model import connect_to_db, Stock, db, UserFavorite
 import crud
 import requests
 import json
+import collections
+import math
 
 
 
@@ -38,6 +40,8 @@ def register_user():
     first_name = request.form.get('fname')
     last_name = request.form.get('lname')
 
+
+    session[first_name] = first_name
     print(request.form)
 
     user_email = crud.get_user_by_email(email)
@@ -47,7 +51,7 @@ def register_user():
     else:
         flash('An account has already been used with this email, please login.')
 
-    return redirect('/users')
+    return render_template('homepage.html',person=first_name )
 
 @app.route("/users/<user_id>")
 def display_user_profile(user_id):
@@ -153,10 +157,11 @@ def get_monthly():
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol={symbol}&apikey={API_KEY}'
     res = requests.get(url)
     json_response = res.json()
-
     
     if symbol:
+        # print(json_response)
         return json_response
+      
     
     else:
         return jsonify({"status": 'error','message': 'No monthly price found about this stock' })
@@ -171,26 +176,8 @@ def all_favorites(favorite_id):
 
     return render_template('all_stocks.html', userFavorites=userFavorites, user_id=user)
 
-@app.route('/api/favorite', methods=['POST'] )
-def set_favorites():
-    """saves user favorite and user id into the db and checks if stock has already been favorited"""
 
-    stock_id = request.values['stock_id']
-    print(session)
-    user_id= session["user"]
-   
-    check = UserFavorite.query.filter_by(user_id=user_id, stock_id=stock_id).first() 
-    if not check:
-        user_favorite = UserFavorite(user_id= user_id, stock_id =stock_id)
-        db.session.add(user_favorite)
-        db.session.commit()
-   
-    
-    print(stock_id, user_id)
-   
-    return redirect('/stocks?symbol=')
-
-@app.route('/api/userfavorite',methods = ['GET'])
+@app.route('/api/userfavorite', methods = ['GET'])
 def get_user_favorite():
     """get user favorite from db"""
 
@@ -202,7 +189,36 @@ def get_user_favorite():
 
     # return json.dumps(favs)
     return jsonify(favs)
-   
+
+@app.route('/api/favorite/<stock_id>', methods=['GET','POST'] )
+def set_favorites(stock_id):
+    """saves user favorite and user id into the db and checks if stock has already been favorited"""
+
+    user_id= session["user"]
+    
+    if request.method == 'GET':
+        userfav = crud.get_user_fav(user_id,stock_id)
+
+        print(stock_id, user_id, '###########line 202#########')
+
+        return jsonify(result=True) if userfav else jsonify(result=False) 
+
+    # # stock_id = request.values['stock_id']
+    # print(session)
+    # user_id= session["user"]
+    else:
+        check = UserFavorite.query.filter_by(user_id=user_id, stock_id=stock_id).first() 
+        
+        if not check:
+            user_favorite = UserFavorite(user_id=user_id, stock_id=stock_id)
+            db.session.add(user_favorite)
+            db.session.commit()
+        else:
+            crud.delete_stock_user(user_id, stock_id)
+        
+        print(stock_id, user_id, '###########line 216#########')
+    
+        return redirect('/stocks?symbol=')
 
 @app.route("/api/delete_favorite", methods=['POST'])
 def delete_stock_json():
@@ -214,6 +230,8 @@ def delete_stock_json():
         crud.delete_stock_user(user_id, stock_id)
 
     return redirect('/stocks?symbol=')
+
+
 
 # @app.route('/stocks/<stock_id>', method=['POST'])
 # def show_favorite_info():

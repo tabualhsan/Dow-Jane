@@ -140,6 +140,15 @@ def user_favorites(user_id):
     db.session.add(favs)
     db.session.commit()
     return favs
+def get_user_fav(user_id,stock_id):
+
+    userfav= UserFavorite.query.filter_by(user_id=user_id, stock_id=stock_id).one()
+
+    return userfav
+
+
+
+
 
 
 if __name__ == '__main__':

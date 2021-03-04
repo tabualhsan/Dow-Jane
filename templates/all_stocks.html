@@ -60,9 +60,14 @@
 </div>
 
 <div class="company_info" id="company_info"hidden >
-<button id="swapHeart" class="btn btn-default swap">
+<button id="favoriteButton" class="btn btn-default swap">
+<span id="unHeart" class = "glyphicon glyphicon-heart-empty"></span></button>
+
+
+
+<!-- <button id="swapHeart" class="btn btn-default swap">
 <span id="unHeart" class="glyphicon glyphicon-heart-empty"></span>
-</button>
+</button> -->
 
 
     
@@ -79,7 +84,7 @@
     <div>
         <dl>
             <dd id="StockID" hidden></dd> 
-            <dt>Stock Price:</dt>
+            <dt><a href="#price_modal" rel="modal:open">Stock Price: $ </a></dt>
             <dd id="price"></dd>
             <dt> Name:</dt>
             <dd id="Name"></dd>  
@@ -123,6 +128,10 @@
     <div id="symbol_modal" class="modal">
         <p>A ticker symbol or stock symbol is an abbreviation used to uniquely identify publicly traded shares of a particular stock on a particular stock market. A stock symbol may consist of letters, numbers or a combination of both.</p>
     </div>
+    <div id="price_modal" class="modal">
+        <p>The intraday price/per stock for this company, it's update every 1min giving you the most current price.</p>
+    </div>
+    
     <div id="address_modal" class="modal">
         <p>The address of headquarter for this company.</p>
     </div>
