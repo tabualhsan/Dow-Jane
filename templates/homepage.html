@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}{% endblock %}
 
+{% block title %}Welcome to Dow Jane{% endblock %}     
 
 {% block body %}
-<h1> Login Page</h1>
+<h2> Login Page</h2>
 <head>
 
     <link rel="stylesheet" href="/static/style.css">
-    
-       <h2>Login</h2>
 
 
        <form id="login" action="/login" method="post">
@@ -23,14 +21,14 @@
   
 
     
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New User?</button>
+      <button id=new_user_buttononclick="document.getElementById('id01').style.display='block'" style="width:auto;">New User?</button>
 
       <div id="id01" class="modal"></div>
 
       <form class="modal-content animate" action="/users" method="post" class= "container">
         <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="static/img/Capture.png" alt="Avatar"  class="avatar">
+          <!-- <img src="static/img/logo.webp" alt="Avatar"  class="avatar"> -->
         </div>
       
         <div class="container">

@@ -5,13 +5,14 @@
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     
-    <link rel="stylesheet" href="/static/style.css">
+  
+    <title>{% block title %}{% endblock %}</title>     
+
     <script
     src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
-    
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -21,33 +22,37 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+
+    {% block header %}
+
+    {% endblock %}
     
-    
-    <script src="/static/stocks.js"></script>
 
 </head>
 <body>
     <nav>
-      <a href="/">Login</a>
-      <a href="/stocks">Stocks</a>
+    <div id="myMenu">
+             
+                <a class="logo_name" href="/stocks">
+                <img class="logo" src="static/img/logo.webp">DOW JANE</a>
+                
+                <div class="right_menu">
+                  <a href="/stocks">Stocks</a>
+                  <a href="/OurMission">Our Mission </a>
+                  <a href="/">Logout</a>
 
+              </div>              
+    
+    </div>
 
       
     </nav>
-    {% for msg in get_flashed_messages() %}
-      <p class="flash-msg">
-        {{ msg }}
-      </p>
-    {% endfor %}
+
     {% block body %}
     
-    
-    <div class="container"></div>
-    
-    {% endblock %}
-
-    {% block after_body %}{% endblock %}
-    
+        
+    {% endblock %}    
    
     
 </body>

@@ -11,6 +11,8 @@ def get_user():
 
     return User.query.all()
 
+def get_user_by_fname(user_id):
+    return User.query.filter(User.id == user_id).first()
 
 def get_user_by_id(user_id):
     """Return a user by primary with user email"""

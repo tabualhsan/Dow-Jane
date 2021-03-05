@@ -40,10 +40,6 @@ def register_user():
     first_name = request.form.get('fname')
     last_name = request.form.get('lname')
 
-
-    session[first_name] = first_name
-    print(request.form)
-
     user_email = crud.get_user_by_email(email)
     if not user_email:
         crud.create_user(email, password, first_name, last_name)
@@ -82,15 +78,28 @@ def check_login():
     password_verification = crud.check_password(email, password)
 
     user_details = crud.get_user_by_email(email)
-    print(password_verification)
     if password_verification == True:
         session["user"] = user_details.user_id
         session["user_name"] = user_details.first_name
+
+        print(session)
 
         return redirect("/stocks")
     else:
         flash("Email or password do not match. Try again!")
         return redirect("/")
+@app.route("/logout")
+def logout():
+    session.clear()
+    print(session)
+
+    return redirect("/")
+@app.route("/OurMission")
+def OurMission():
+
+    user=session["user"]
+
+    return render_template('women.html')
 
 # ===============================stock info=================================
 
@@ -98,6 +107,7 @@ def check_login():
 def stocks():
     """userfavorite in db as favs"""
     user = session["user"]
+
     stock_list = Stock.query.all()
     # favs = UserFavorite.query.filter_by(user_id=user).all()
     favs = db.session.query(UserFavorite.stock_id,Stock.stock_name, Stock.symbol).filter_by(user_id = user).join(Stock).all()

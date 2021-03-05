@@ -1,97 +1,77 @@
 {% extends 'base.html' %}
+
+
+{% block header %}<script src="/static/stocks.js"></script>{% endblock %}
+
 {% block title %}All Stocks{% endblock %}
 
 
 {% block body %}
-  <h1>Stock App</h1>
     <div>
-        <h2>Stocks</h2>
+        <h3>Stocks</h3>
         <form id = "stock_select" action="/stocks">
-            <select name="symbol" id="stock_symbol">
+            <select  name="symbol" id="stock_symbol">
                 <option default>Pick your stock</option>
 
                 {% for stock in stock_list %}
-                    <option value="{{stock.symbol}}">{{stock.symbol}} - {{ stock.stock_name }}</option>
+                    <option class="custom-select" value="{{stock.symbol}}">{{stock.symbol}} - {{ stock.stock_name }}</option>
                     
                 {% endfor %}
             </select>
-            <input class="btn btn-primary" type="submit" value="Submit">  
+            <input class="submit" type="submit" value="Submit">  
              
         </form>
     </div>
     
-     <h3>Favorites</h3> 
-    <section id="display-favorites"></section>
-    <div class="Favorites" >
-        <d1>    
-            <dt>My Favorites:</dt>
-            
-            <dd id="user_favorites">
-               
-            </dd>
-            {% for fav in favs %}
-            
-            {% endfor %}
+     <h3>Welcome {{session.user_name}}!</h3> 
 
-
-        </d1>
-    </div>
-    <title></title>
     <div class="container">
-        <h2>Stock Prices</h2>
+
+        <button id="swapHeart" class="btn btn-default swap">
+            <span class="glyphicon glyphicon-heart-empty"></span>
+            </button>
+
+        <h2><dd id="Name"></dd> </h2>
+
+
+        <span><a href="#price_modal" rel="modal:open">Current Price: </a>
+        $<span id="price"></span></span>
+
         <canvas id="stock-chart"width="100" height="100"></canvas>
     
         <label for="spacing">Duration:</label>
         <div class="slider">
         <datalist id="steplist">
-            <option label="3" value="3">
-            <option label="6" value="6">
-            <option label="9" value="9">
-            <option label="12" value="12">
-            <option label="15" value="15">  
-            <option label="18" value="18">
-            <option label="21" value="21">
-            <option label="24" value="24">
+            <option label="3" value="3"></option>
+            <option label="6" value="6"></option>
+            <option label="9" value="9"></option>
+            <option label="12" value="12"></option>
+            <option label="15" value="15"></option> 
+            <option label="18" value="18"></option>
+            <option label="21" value="21"></option>
+            <option label="24" value="24"></option>
         </datalist>
         <input onchange="displayPrices()" list="steplist" id="duration" type="range" min="3" max="24" step="3" value="12">  
         </div>
       
     
-</div>
-
-<div class="company_info" id="company_info"hidden >
-<button id="favoriteButton" class="btn btn-default swap">
-<span id="unHeart" class = "glyphicon glyphicon-heart-empty"></span></button>
-
-
-
-<!-- <button id="swapHeart" class="btn btn-default swap">
-<span id="unHeart" class="glyphicon glyphicon-heart-empty"></span>
-</button> -->
-
-
-    
+    </div>
 
 
 
 
 
-<!-- 
-        <button type="button" id="favorite" class="bi bi-heart">like button</button>
-        <button id="not_favorite" value="test ">unlike button</button> -->
 
     </div>
-    <div>
+    <div id="stock_data">
         <dl>
             <dd id="StockID" hidden></dd> 
-            <dt><a href="#price_modal" rel="modal:open">Stock Price: $ </a></dt>
-            <dd id="price"></dd>
-            <dt> Name:</dt>
-            <dd id="Name"></dd>  
             <dt><a href="#symbol_modal" rel="modal:open">Symbol:</a></dt>
             <dd id="Symbol_ticker"></dd>  
             <dt>Description:</dt>
             <dd id="Description"></dd>
+            <dt><a class="WomenLead"href="#WomenLead_modal" rel="modal:open">Women Lead:</a></dt>
+            <dd id="WomenLead"></dd>
             <dt><a href="#address_modal" rel="modal:open" >Address:</a></dt>
             <dd id="Address"></dd>
             <dt><a href="#employee_modal" rel= "modal:open">Full Time Employees:</a></dt>
@@ -112,8 +92,6 @@
             <dd id="PEGRatio"></dd>   
             <dt><a href="#PERatio_modal" rel="modal:open">PERatio:</a></dt>
             <dd id="PERatio"></dd>   
-            <dt><a href="#WomenLead_modal" rel="modal:open">Women Lead:</a></dt>
-            <dd id="WomenLead"></dd>
             <dt><a href="#52WeekHigh_modal" rel="modal:open">52WeekHigh:</a></dt>
             <dd id="52WeekHigh"></dd>   
             <dt><a href="#52WeekLow_modal" rel="modal:open">52WeekLow:</a></dt>
@@ -122,6 +100,22 @@
             <dd id="EPS"></dd>
             
         </dl>
+    </div>
+
+
+    <div class="Favorites" >
+        <d1>    
+            <dt>{{session.user_name}}'s Favorites:</dt>
+            
+            <dd id="user_favorites">
+               
+            </dd>
+            {% for fav in favs %}
+            
+            {% endfor %}
+
+
+        </d1>
     </div>
 
 
@@ -169,7 +163,7 @@
     </div>
 
     <div id="WomenLead_modal" class="modal">
-        <p>Companies who currently hold a women CEO positions. "Women currently ONLY hold (5.8%) of CEO positions at S&P 500 companies"<a href="https://www.catalyst.org/research/women-in-sp-500-companies/"> Checkout who these women are!</a> </p>   </div>
+        <p>Companies who currently hold a women CEO positions. "Women currently ONLY hold (5.8%) of CEO positions at S&P 500 companies" Checkout who these women are Our Mission page!</a> </p>   </div>
 
     </div>
     </section>

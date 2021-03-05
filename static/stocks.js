@@ -38,7 +38,7 @@ function get_price(){
 
         $.get('/api/price?symbol='+ symbol, (price) => {
         var last_price = (price["Time Series (1min)"][Object.keys(price["Time Series (1min)"])[0]][ "1. open"]);
-        $("#price").html(Math.round(last_price));
+        $("#price").html((last_price));
     }
 
         );
@@ -75,27 +75,26 @@ function get_price(){
 
 
 
-function isFavorited(stock_id){
-    let check = null;
-    fetch(`/api/favorite/${stock_id}`, {
-        method: 'GET',
-    })
-    .then((res) => res.json())
-    .then((data) => check = data.result)
-    check ? $("#favoriteButton").attr("class", "btn btn-default swap") : $("#favoriteButton").attr("class", "glyphicon glyphicon-heart-empty")
+// function isFavorited(stock_id){
+//     let check = null;
+//     fetch(`/api/favorite/${stock_id}`, {
+//         method: 'GET',
+//     })
+//     .then((res) => res.json())
+//     .then((data) => check = data.result)
+//     check ? $("#favoriteButton").attr("class", "btn btn-default swap") : $("#favoriteButton").attr("class", "glyphicon glyphicon-heart-empty");
 
 
     
-};
+// };
 
 
-jQuery(function($) {$('#favoriteButton').on('click', function() {
+// jQuery(function($) {$('#favoriteButton').on('click', function() {
     
-    $.post(`/api/favorite/${StockID}`, {'StockID': StockID}, favorite_table);
-    isFavorited(StockID) 
+//     $.post(`/api/favorite/${StockID}`, {'StockID': StockID}, favorite_table);
+//     isFavorited(StockID) 
 
-})});
-
+// })})
 
 
 jQuery(function($) {
@@ -110,25 +109,25 @@ jQuery(function($) {
     // $("#swapHeart").show();
       var stock_id = $('#StockID').text();
 
-      $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
+      $.post(`/api/favorite/${stock_id}`, {"stock_id": stock_id}, favorite_table);
     // $('#swapHeart').attr("id","unHeart")
     });
   });
 
-jQuery(function($) {
-$('#unHeart').on('click', function() {
-    var $el = $(this),
-    textNode = this.lastChild;
-    $el.find('span').toggleClass('glyphicon-empty glyphicon-heart-heart');
-    $el.toggleClass('swap');
-// $("#unHeart").show();
-// $("#swapHeart").hide();
-    var stock_id = $('#StockID').text();
+// jQuery(function($) {
+// $('#unHeart').on('click', function() {
+//     var $el = $(this),
+//     textNode = this.lastChild;
+//     $el.find('span').toggleClass('glyphicon-empty glyphicon-heart-heart');
+//     $el.toggleClass('swap');
+// // $("#unHeart").show();
+// // $("#swapHeart").hide();
+//     var stock_id = $('#StockID').text();
 
-    $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
-    $('#unheart').attr("id","swapHeart")
-});
-});
+//     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
+//     $('#unheart').attr("id","swapHeart")
+// });
+// });
 
 
 function favorite(evt){
@@ -254,7 +253,8 @@ function new_user(){
     $("#modal").on('click',new_user);
     $(document).ready(favorite_table());
     $(document).ready(load_page);
-    $(document).ready(isFavorited(StockID));
+    // $("#swapHeart").on('click', isFavorited())
+    // $(document).on('submit', isFavorited(StockID));
 
 // *****************************************chart*******************************************************************
 
