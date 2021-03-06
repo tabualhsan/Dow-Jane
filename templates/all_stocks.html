@@ -24,7 +24,7 @@
     </div>
     
      <h3>Welcome {{session.user_name}}!</h3> 
-
+<div id="all_items"></div>
     <div class="container">
 
         <button id="swapHeart" class="btn btn-default swap">
@@ -42,7 +42,7 @@
         <label for="spacing">Duration:</label>
         <div class="slider">
         <datalist id="steplist">
-            <option label="3" value="3"></option>
+            <option label="3" value="3">3</option>
             <option label="6" value="6"></option>
             <option label="9" value="9"></option>
             <option label="12" value="12"></option>
@@ -82,7 +82,7 @@
             <dd id="GrossProfitTTM"></dd>
             <dt><a href="#FiscalYearEnd_modal" rel= "modal:open">Fiscal Year End:</a></dt>
             <dd id="FiscalYearEnd"></dd>
-            <dt>Asset Type:</dt>   
+            <dt><a href="#AssetType_modal" rel= "modal:open" >Asset Type:</a></dt>   
             <dd id="AssetType"></dd>
             <dt><a href="#DividendYield_modal" rel="modal:open">Dividend Yield:</a></dt>   
             <dd id="DividendYield"></dd>
@@ -166,8 +166,20 @@
         <p>Companies who currently hold a women CEO positions. "Women currently ONLY hold (5.8%) of CEO positions at S&P 500 companies" Checkout who these women are Our Mission page!</a> </p>   </div>
 
     </div>
-    </section>
+    <div id="AssetType_modal" class="modal">
 
+        <p>An asset class is a grouping of investments that exhibit similar characteristics and are subject to the same laws and regulations. Equities (stocks), fixed Income (bonds), cash and cash equivalents, real estate, commodities, futures, and other financial derivatives are examples of asset classes.</p>
+    </div>
+    </section>
+</div>
+
+<script>
+    // $(document).ready(function(){
+    //     $("#stock_select").on('submit',function(){
+    //         $("#all_items").show();
+    //     })
+    // })
+</script>
     
  
    

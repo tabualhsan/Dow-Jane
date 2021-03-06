@@ -206,8 +206,15 @@ function updateInfo(results){
     } 
 
 };
+// $(document).ready(function updateInfo(results){
+//     $("#stock_data").hide();
+//  });
 
-
+$(document).ready(function(){
+    $("#stock_select").on('click',function(){
+        $("#all_items").show();
+    })
+})
 
 //     // $('element').load('/get_content')
   

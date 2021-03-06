@@ -25,16 +25,16 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
   cursor: pointer;
-  animate: 0.2s;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background:rgb(255, 99, 132);
+  background: rgb(255, 99, 132);
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 }
 body {font-family:  D-din Exp,GT America,"system-ui",BlinkMacSystemFont,-apple-system,Segoe UI,Helvetica Neue,Helvetica,sans-serif;
-  background-color: #444;
+  background-color: #32323e;
   color:white;
   margin: 20px;
+ 
   
   
 }
@@ -76,7 +76,11 @@ input[type=text], input[type=password] {
   color:black;
 }
 
-#
+#login-btn{
+  background-color:#52e3c2;
+
+}
+
 /* Set a style for all buttons */
 button {
   background-color: #52e3c2;
@@ -85,7 +89,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 10%;
 }
 .submit{
   background-color:#52e3c2;
@@ -107,10 +111,6 @@ button:hover {
   position: relative;
 }
 
-img.avatar {
-  width: 20%;
-  border-radius: 50%;
-}
 
 a {
   color:#52e3c2;
@@ -135,6 +135,32 @@ span.psw {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   padding-top: 60px;
+  color:black;
+}
+
+
+.modal {
+  display: none;
+  vertical-align: middle;
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  box-sizing: border-box;
+  width: 90%;
+  background: #fff;
+  padding: 15px 30px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 0 10px #000;
+  -moz-box-shadow: 0 0 10px #000;
+  -o-box-shadow: 0 0 10px #000;
+  -ms-box-shadow: 0 0 10px #000;
+  box-shadow: 0 0 10px #000;
+  text-align: left;
+  color:black;
 }
 
 /* Modal Content Box */
@@ -143,17 +169,31 @@ span.psw {
   margin: 5% auto 15% auto; 
   border: 1px solid #888;
   width: 80%; 
+  color:black;
+  font-size: large;
 }
 /* The Close Button x */
 .close {
-  position: absolute;
+  position: relative;
   right: 25px;
   top: 0;
   color: #000;
-  font-size: 35px;
+  font-size: 20px;
   font-weight: bold;
 }
-
+.modal a.close-modal {
+  position: absolute;
+  top: -1.5px;
+  right: -1.5px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  text-indent: -9999px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAA3hJREFUaAXlm8+K00Acx7MiCIJH/yw+gA9g25O49SL4AO3Bp1jw5NvktC+wF88qevK4BU97EmzxUBCEolK/n5gp3W6TTJPfpNPNF37MNsl85/vN/DaTmU6PknC4K+pniqeKJ3k8UnkvDxXJzzy+q/yaxxeVHxW/FNHjgRSeKt4rFoplzaAuHHDBGR2eS9G54reirsmienDCTRt7xwsp+KAoEmt9nLaGitZxrBbPFNaGfPloGw2t4JVamSt8xYW6Dg1oCYo3Yv+rCGViV160oMkcd8SYKnYV1Nb1aEOjCe6L5ZOiLfF120EjWhuBu3YIZt1NQmujnk5F4MgOpURzLfAwOBSTmzp3fpDxuI/pabxpqOoz2r2HLAb0GMbZKlNV5/Hg9XJypguryA7lPF5KMdTZQzHjqxNPhWhzIuAruOl1eNqKEx1tSh5rfbxdw7mOxCq4qS68ZTjKS1YVvilu559vWvFHhh4rZrdyZ69Vmpgdj8fJbDZLJpNJ0uv1cnr/gjrUhQMuI+ANjyuwftQ0bbL6Erp0mM/ny8Fg4M3LtdRxgMtKl3jwmIHVxYXChFy94/Rmpa/pTbNUhstKV+4Rr8lLQ9KlUvJKLyG8yvQ2s9SBy1Jb7jV5a0yapfF6apaZLjLLcWtd4sNrmJUMHyM+1xibTjH82Zh01TNlhsrOhdKTe00uAzZQmN6+KW+sDa/JD2PSVQ873m29yf+1Q9VDzfEYlHi1G5LKBBWZbtEsHbFwb1oYDwr1ZiF/2bnCSg1OBE/pfr9/bWx26UxJL3ONPISOLKUvQza0LZUxSKyjpdTGa/vDEr25rddbMM0Q3O6Lx3rqFvU+x6UrRKQY7tyrZecmD9FODy8uLizTmilwNj0kraNcAJhOp5aGVwsAGD5VmJBrWWbJSgWT9zrzWepQF47RaGSiKfeGx6Szi3gzmX/HHbihwBser4B9UJYpFBNX4R6vTn3VQnez0SymnrHQMsRYGTr1dSk34ljRqS/EMd2pLQ8YBp3a1PLfcqCpo8gtHkZFHKkTX6fs3MY0blKnth66rKCnU0VRGu37ONrQaA4eZDFtWAu2fXj9zjFkxTBOo8F7t926gTp/83Kyzzcy2kZD6xiqxTYnHLRFm3vHiRSwNSjkz3hoIzo8lCKWUlg/YtGs7tObunDAZfpDLbfEI15zsEIY3U/x/gHHc/G1zltnAgAAAABJRU5ErkJggg==);
+}
 .close:hover,.close:focus {
   color: #52e3c2;
   cursor: pointer;
@@ -182,7 +222,8 @@ span.psw {
 .right_menu {
   position: absolute;
   right: 20px;
-  top: 20px
+  top: 20px;
+  font-size: large;
 }
 
 
@@ -202,5 +243,24 @@ span.psw {
 
 
 }
+
+
+ 
+
+#steplist{
+
+  color: white;
+  text-orientation: sideways;
+  font-weight: normal;
+  white-space: pre;
+  display: inline;
+  
+
+}
+
+/* #all_items{
+  display: none ;
+} */
+
 
 

@@ -15,20 +15,20 @@
         <input type="text" placeholder="Enter Email" name="email" required>
         <label>Password : </label> 
         <input type="password" placeholder="Enter Password" name="password" required>
-        <button type="submit">Login</button> 
-        <input type="checkbox" checked="checked"> Remember me 
+        <div></div> <button id ="login_button" type="submit">Login</button></div> 
+        <input type="checkbox" checked="checked">  Remember me 
       </form>
   
 
     
-      <button id=new_user_buttononclick="document.getElementById('id01').style.display='block'" style="width:auto;">New User?</button>
+      <!-- <button id=new_user_button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New User?</button> -->
 
       <div id="id01" class="modal"></div>
 
       <form class="modal-content animate" action="/users" method="post" class= "container">
         <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <!-- <img src="static/img/logo.webp" alt="Avatar"  class="avatar"> -->
+         <p> New User? </p>
         </div>
       
         <div class="container">
