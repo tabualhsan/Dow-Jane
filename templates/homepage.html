@@ -15,47 +15,32 @@
         <input type="text" placeholder="Enter Email" name="email" required>
         <label>Password : </label> 
         <input type="password" placeholder="Enter Password" name="password" required>
-        <div></div> <button id ="login_button" type="submit">Login</button></div> 
-        <input type="checkbox" checked="checked">  Remember me 
+         <button id ="login_button" type="submit">Login</button> 
       </form>
   
+      <button id=new_user_button onclick="document.getElementById('new_user').style.display='block'" style="width:auto;">New User?</button>
 
-    
-      <!-- <button id=new_user_button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New User?</button> -->
+      <div id="new_user" class="modal">
+        <form action="/users" method="post">
+          <span onclick="document.getElementById('new_user').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <h2>Register User</h2>
+        
+            <label for="fname"><b>First Name</b></label>
+            <input type="text" placeholder="First Name" name="fname" required>
 
-      <div id="id01" class="modal"></div>
+            <label for="lname"><b>Last Name</b></label>
+            <input type="text" placeholder="Last Name" name="lname" required>
 
-      <form class="modal-content animate" action="/users" method="post" class= "container">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-         <p> New User? </p>
-        </div>
-      
-        <div class="container">
-          <label for="fname"><b>First Name</b></label>
-          <input type="text" placeholder="First Name" name="fname" required>
-
-          <label for="lname"><b>Last Name</b></label>
-          <input type="text" placeholder="Last Name" name="lname" required>
-
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Email" name="email" required>
-          
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Email" name="email" required>
             
-          <button type="submit">Register</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
-    
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="login-button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-          
-        </div>
-      </form>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <button type="submit">Register</button>
+            <button type="login-button" onclick="document.getElementById('new_user').style.display='none'" class="cancelbtn">Cancel</button>
+
+        </form>
     </div>
    
        <script src="/static/stocks.js"></script>

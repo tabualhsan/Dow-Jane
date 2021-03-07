@@ -9,11 +9,6 @@
     margin-bottom: 20px;
 }
 
-input[type=range] {
-  display: block;
-  width: 50%;
- 
-}
 
 dt {
   margin-top:15px;
@@ -22,13 +17,9 @@ dt {
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  height: 8px;
   background: rgb(255, 99, 132);
   border-radius: 1.3px;
-  border: 0.2px solid #010101;
 }
 body {font-family:  D-din Exp,GT America,"system-ui",BlinkMacSystemFont,-apple-system,Segoe UI,Helvetica Neue,Helvetica,sans-serif;
   background-color: #32323e;
@@ -85,11 +76,10 @@ input[type=text], input[type=password] {
 button {
   background-color: #52e3c2;
   color: white;
-  padding: 14px 20px;
+  padding: 10px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 10%;
 }
 .submit{
   background-color:#52e3c2;
@@ -120,22 +110,6 @@ a {
 span.psw {
   float: right;
   padding-top: 16px;
-}
-
-/* The Modal background */
-#id01 {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-  color:black;
 }
 
 
@@ -245,22 +219,18 @@ span.psw {
 }
 
 
- 
-
-#steplist{
-
-  color: white;
-  text-orientation: sideways;
-  font-weight: normal;
-  white-space: pre;
-  display: inline;
-  
-
+#duration {
+  display:block;
+  margin: 0;
+  width:37%;
 }
 
-/* #all_items{
-  display: none ;
-} */
+datalist {
+  display: table;
+  table-layout: fixed; 
+  width: 40%;
+}
 
-
-
+option {
+  display: table-cell;
+}

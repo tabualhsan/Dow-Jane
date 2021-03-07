@@ -24,7 +24,7 @@
     </div>
     
      <h3>Welcome {{session.user_name}}!</h3> 
-<div id="all_items"></div>
+<div id="all_items" hidden>
     <div class="container">
 
         <button id="swapHeart" class="btn btn-default swap">
@@ -42,14 +42,14 @@
         <label for="spacing">Duration:</label>
         <div class="slider">
         <datalist id="steplist">
-            <option label="3" value="3">3</option>
-            <option label="6" value="6"></option>
-            <option label="9" value="9"></option>
-            <option label="12" value="12"></option>
-            <option label="15" value="15"></option> 
-            <option label="18" value="18"></option>
-            <option label="21" value="21"></option>
-            <option label="24" value="24"></option>
+            <option label="3" value="3">
+            <option label="6" value="6">
+            <option label="9" value="9">
+            <option label="12" value="12">
+            <option label="15" value="15"> 
+            <option label="18" value="18">
+            <option label="21" value="21">
+            <option label="24" value="24">
         </datalist>
         <input onchange="displayPrices()" list="steplist" id="duration" type="range" min="3" max="24" step="3" value="12">  
         </div>
@@ -58,11 +58,6 @@
     </div>
 
 
-
-
-
-
-    </div>
     <div id="stock_data">
         <dl>
             <dd id="StockID" hidden></dd> 
@@ -102,23 +97,6 @@
         </dl>
     </div>
 
-
-    <div class="Favorites" >
-        <d1>    
-            <dt>{{session.user_name}}'s Favorites:</dt>
-            
-            <dd id="user_favorites">
-               
-            </dd>
-            {% for fav in favs %}
-            
-            {% endfor %}
-
-
-        </d1>
-    </div>
-
-
     <div id="symbol_modal" class="modal">
         <p>A ticker symbol or stock symbol is an abbreviation used to uniquely identify publicly traded shares of a particular stock on a particular stock market. A stock symbol may consist of letters, numbers or a combination of both.</p>
     </div>
@@ -138,6 +116,7 @@
     </div>
     <div id="PEGRatio_modal" class="modal">
         <p>The 'PEG ratio' (price/earnings to growth ratio) is a valuation metric for determining the relative trade-off between the price of a stock, the earnings generated per share (EPS), and the company's expected growth. In general, the P/E ratio is higher for a company with a higher growth rate.</p>
+    </div>
     <div id="DividendPerShare_modal" class="modal">
         <p>The sum of declared dividends issued by a company for every ordinary share outstanding.</p>
     </div>
@@ -155,6 +134,7 @@
     </div>
     <div id="FiscalYearEnd_modal" class="modal">
         <p>A fiscal year is a one-year period that companies and governments use for financial reporting and budgeting. A fiscal year is most commonly used for accounting purposes to prepare financial statements. Although a fiscal year can start on January 1st and end on December 31st, not all fiscal years correspond with the calendar year. A fiscal year is important to publicly-traded corporations and their investors since it is the period over which revenue and earnings are measured, making year-to-year comparisons possible.</p>
+    </div>
     <div id="RevenueTTM_modal" class="modal">
         <p>TTM Revenue describes the revenue that a company earns over the trailing 12 months (TTM) of business.</p>
     </div>
@@ -163,23 +143,30 @@
     </div>
 
     <div id="WomenLead_modal" class="modal">
-        <p>Companies who currently hold a women CEO positions. "Women currently ONLY hold (5.8%) of CEO positions at S&P 500 companies" Checkout who these women are Our Mission page!</a> </p>   </div>
+        <p>Companies who currently hold a women CEO positions. "Women currently ONLY hold (5.8%) of CEO positions at S&P 500 companies" Checkout who these women are Our Mission page!</a> </p> 
 
     </div>
     <div id="AssetType_modal" class="modal">
 
         <p>An asset class is a grouping of investments that exhibit similar characteristics and are subject to the same laws and regulations. Equities (stocks), fixed Income (bonds), cash and cash equivalents, real estate, commodities, futures, and other financial derivatives are examples of asset classes.</p>
     </div>
-    </section>
 </div>
 
-<script>
-    // $(document).ready(function(){
-    //     $("#stock_select").on('submit',function(){
-    //         $("#all_items").show();
-    //     })
-    // })
-</script>
+
+<div class="Favorites" >
+    <d1>    
+        <dt>{{session.user_name}}'s Favorites:</dt>
+        
+        <dd id="user_favorites">
+           
+        </dd>
+        {% for fav in favs %}
+        
+        {% endfor %}
+
+
+    </d1>
+</div>
     
  
    

@@ -5,8 +5,11 @@ function get_stock_info(evt){
 
     let symbol = $("#stock_symbol").val();
 
-
     $.get('/api/stock?symbol='+ symbol, updateInfo);
+
+    $("#all_items").show();
+
+    displayPrices();
 
 
 }
@@ -14,15 +17,16 @@ function get_stock_info(evt){
 
 function load_page(){
 
-
     let symbol = getUrlParameter('symbol');
 
     if (symbol != false) {
-
         $.get('/api/stock?symbol='+ symbol, updateInfo);
+        $("#all_items").show();
+        get_price();
+        displayPrices();
+    } else {
+        console.log("Please select");
     }
-    get_price();
-    
     
 
 }
@@ -42,7 +46,6 @@ function get_price(){
     }
 
         );
-        // console.log(price);
     };
 
  }
@@ -210,19 +213,9 @@ function updateInfo(results){
 //     $("#stock_data").hide();
 //  });
 
-$(document).ready(function(){
-    $("#stock_select").on('click',function(){
-        $("#all_items").show();
-    })
-})
 
 //     // $('element').load('/get_content')
   
-
-
-
-
-
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -265,7 +258,6 @@ function new_user(){
 
 // *****************************************chart*******************************************************************
 
-displayPrices();
 function displayPrices(){
 
 let duration = $("#duration").val();
@@ -334,9 +326,3 @@ let chart = new Chart(ctx, {
 });
 }
 
-// $("#stock_select").on('submit', get_stock_info);
-// // $("#not_favorite").on('click', favorite);
-// // $("#favorited").on('click', delete_favorite);
-// $("#modal").on('click',new_user);
-// $(document).ready(favorite_table());
-// $(document).ready(load_page);
