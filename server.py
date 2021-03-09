@@ -8,6 +8,8 @@ import requests
 import json
 import collections
 import math
+from hashing import make_pw_hash, check_pw_hash
+		
 
 
 
@@ -36,13 +38,14 @@ def register_user():
 
     email = request.form.get('email')
     password = request.form.get('password')
-    # dob = request.form.get('dob')
     first_name = request.form.get('fname')
     last_name = request.form.get('lname')
 
+    hash_pw = make_pw_hash(password) 
+
     user_email = crud.get_user_by_email(email)
     if not user_email:
-        crud.create_user(email, password, first_name, last_name)
+        crud.create_user(email, hash_pw, first_name, last_name)
         flash('Account created! Please log in.')
     else:
         flash('An account has already been used with this email, please login.')
@@ -72,10 +75,10 @@ def check_login():
 
     email = request.form.get("email")
     password = request.form.get("password")
-
+    hash_pw = make_pw_hash(password) 
     print(request.args)
 
-    password_verification = crud.check_password(email, password)
+    password_verification = crud.check_password(email, hash_pw)
 
     user_details = crud.get_user_by_email(email)
     if password_verification == True:

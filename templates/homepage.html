@@ -17,9 +17,9 @@
         <input type="password" placeholder="Enter Password" name="password" required>
          <button id ="login_button" type="submit">Login</button> 
       </form>
-  
+     
       <button id=new_user_button onclick="document.getElementById('new_user').style.display='block'" style="width:auto;">New User?</button>
-
+      
       <div id="new_user" class="modal">
         <form action="/users" method="post">
           <span onclick="document.getElementById('new_user').style.display='none'" class="close" title="Close Modal">&times;</span>

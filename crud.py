@@ -30,7 +30,7 @@ def create_user(email, password, first_name, last_name):
     """create a new user"""
 
     user = User(email=email,
-                password=password, 
+                password=password,
                 first_name=first_name, 
                 last_name=last_name)
 
@@ -53,21 +53,6 @@ def check_password(email, password):
 # stock info ================================================================
 
 API_KEY = '3LOOI2SBODXLNS10'
-
-# def create_stock_info(symbol, name, description, ceo, headquarters, founded, employees, address, sector, exchange, asset_type):
-#     """create a stocks profile"""
-#     stock = Stock(symbol=symbol, 
-#                 name=name,
-#                 description=description, 
-#                 founded=founded,
-#                 employees=employees,
-#                 exchange=exchange, 
-#                 asset_type=asset_type)
-
-#     db.session.add(stock)
-#     db.session.commit()
-
-#     return stock
 
 
 

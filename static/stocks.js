@@ -1,5 +1,7 @@
 "use strict";
 
+// A function to get stock info from AA API using stock symbol stored in the database 
+
 function get_stock_info(evt){
     evt.preventDefault();
 
@@ -12,8 +14,9 @@ function get_stock_info(evt){
     displayPrices();
 
 
-}
-
+};
+// ************************************************************************************************************************************************************
+// when page is loaded page renders all stock info from get_stock_info, price function's
 
 function load_page(){
 
@@ -30,8 +33,8 @@ function load_page(){
     
 
 }
-
-
+// ************************************************************************************************************************************************************
+// gets current price from AA API, updates every 1 minute 
 
 function get_price(){
 
@@ -49,57 +52,9 @@ function get_price(){
     };
 
  }
+// ************************************************************************************************************************************************************
 
-// ("#like_button").click(function(){
-// $("#swapHeart").toggle(function(){
-
-//     var stock_id = $('#StockID').text();
-
-//     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
-
-
-
-
-// }, function (){
-
-//     var stock_id = $('#StockID').text();
-
-//     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
-
-
-// })})
-
-// GET function isFavorited() that calls to backend to check whether or not a object for userfavorites for a user and stock_id exist --> return True or False
-
-// create an event listener on click for id = "favorite":
-// 1st part: POST send a post request to the backend to check if userFavorite for user_id & stock_id exists --> if it does exist, delete it; if it doesn't exist, create it
-// callbacks: favorite_Table & isFavorited to check if True or False --> this will determine which heart will show to the user; filled (True) vs unfilled (False) 
-
-
-
-
-// function isFavorited(stock_id){
-//     let check = null;
-//     fetch(`/api/favorite/${stock_id}`, {
-//         method: 'GET',
-//     })
-//     .then((res) => res.json())
-//     .then((data) => check = data.result)
-//     check ? $("#favoriteButton").attr("class", "btn btn-default swap") : $("#favoriteButton").attr("class", "glyphicon glyphicon-heart-empty");
-
-
-    
-// };
-
-
-// jQuery(function($) {$('#favoriteButton').on('click', function() {
-    
-//     $.post(`/api/favorite/${StockID}`, {'StockID': StockID}, favorite_table);
-//     isFavorited(StockID) 
-
-// })})
-
-
+// toggles between the full heart and empty heart when user likes and unlikes stock
 jQuery(function($) {
     $('#swapHeart').on('click', function() {
       var $el = $(this),
@@ -108,46 +63,30 @@ jQuery(function($) {
       
       $el.toggleClass('swap');
        
-    // $("#unHeart").hide();
-    // $("#swapHeart").show();
       var stock_id = $('#StockID').text();
 
       $.post(`/api/favorite/${stock_id}`, {"stock_id": stock_id}, favorite_table);
-    // $('#swapHeart').attr("id","unHeart")
+  
     });
   });
 
-// jQuery(function($) {
-// $('#unHeart').on('click', function() {
-//     var $el = $(this),
-//     textNode = this.lastChild;
-//     $el.find('span').toggleClass('glyphicon-empty glyphicon-heart-heart');
-//     $el.toggleClass('swap');
-// // $("#unHeart").show();
-// // $("#swapHeart").hide();
-//     var stock_id = $('#StockID').text();
-
-//     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
-//     $('#unheart').attr("id","swapHeart")
-// });
-// });
-
-
+// ************************************************************************************************************************************************************
+// adds favortie to database and favorite table 
 function favorite(evt){
     evt.preventDefault();
-
-    console.log("Hello");
     
     $("#unHeart").hide();
     $("#swapHeart").show();
 
     var stock_id = $('#StockID').text();
 
+
+
     $.post('/api/favorite', {"stock_id": stock_id}, favorite_table);
 
 };
-
-
+// ************************************************************************************************************************************************************
+// delete favorite from database and favorite table 
  function delete_favorite(evt){
     evt.preventDefault();
     console.log("Hello");
@@ -159,13 +98,11 @@ function favorite(evt){
 
     $.post('/api/delete_favorite', {"stock_id": stock_id}, favorite_table);
  };
-
+// ************************************************************************************************************************************************************
+// Show user favorites in user favorite table, updated when user likes a stock 
  function favorite_table(){
-    // console.log("we're in the favorite_table now")
-    // var favs = ($.get('/api/userfavorite'));
-    //     console.log(favs);
-
-    $.get('/api/userfavorite', (favs) => {
+   
+     $.get('/api/userfavorite', (favs) => {
         var favs_length = favs.length;
         $("#user_favorites").html("");
         for (var i = 0; i < favs_length; i++) {
@@ -177,6 +114,7 @@ function favorite(evt){
     });
     
 };
+// get all stock info from AA api 
 
 let StockID = null
 
@@ -209,14 +147,9 @@ function updateInfo(results){
     } 
 
 };
-// $(document).ready(function updateInfo(results){
-//     $("#stock_data").hide();
-//  });
 
-
-//     // $('element').load('/get_content')
   
-
+// ************************************************************************************************************************************************************
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -233,7 +166,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
     return false;
 };
 
-
+// ************************************************************************************************************************************************************
 // Get the modal
 function new_user(){
     var modal = document.getElementById('id01');
@@ -245,19 +178,17 @@ function new_user(){
         }
     }
     };
-
-    
+// ************************************************************************************************************************************************************
+// call's all functions from above  
     $("#stock_select").on('submit', get_stock_info);
     $("#unHeart").on('click', favorite);
     $("#swapHeart").on('click', delete_favorite);
     $("#modal").on('click',new_user);
-    $(document).ready(favorite_table());
+    $(document).ready(favorite_table);
     $(document).ready(load_page);
-    // $("#swapHeart").on('click', isFavorited())
-    // $(document).on('submit', isFavorited(StockID));
 
-// *****************************************chart*******************************************************************
-
+// ************************************************************************************************************************************************************
+// CHART.JS 
 function displayPrices(){
 
 let duration = $("#duration").val();
