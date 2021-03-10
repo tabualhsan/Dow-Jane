@@ -8,7 +8,7 @@ Dow Jane is an educational platform to empower women to be informed about stock 
 Backend: Flask, Python3, SQLAlchemy, bycrypt, Alpha Vantage API 
 Frontend: JavaScript, HTML5, CSS3, chart.js, jQuery, Ajax 
 Database: PostgreSQL
-API: Alpha Vantage API
+API: Alpha Vantage
 
 
 
