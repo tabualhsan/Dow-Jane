@@ -1,7 +1,6 @@
 "use strict";
 
 // A function to get stock info from AA API using stock symbol stored in the database 
-
 function get_stock_info(evt){
     evt.preventDefault();
 
@@ -186,6 +185,7 @@ function new_user(){
     $("#modal").on('click',new_user);
     $(document).ready(favorite_table);
     $(document).ready(load_page);
+    
 
 // ************************************************************************************************************************************************************
 // CHART.JS 

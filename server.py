@@ -91,11 +91,20 @@ def check_login():
     else:
         flash("Email or password do not match. Try again!")
         return redirect("/")
-@app.route("/logout")
+@app.route("/logout", methods=['DELETE'])
 def logout():
-    session.clear()
-    print(session)
+    if 'user' in session:
+        del session['user']
+        return jsonify({'message': 'logged out'}), 200
+    #     session.pop('user',None)
+    #     return render_template("/")
 
+    # else:
+    #     return "user already logged out"
+    # session.clear()
+    # session.abandon()
+    # print(session)
+    
     return redirect("/")
 @app.route("/OurMission")
 def OurMission():
@@ -212,13 +221,11 @@ def set_favorites(stock_id):
     if request.method == 'GET':
         userfav = crud.get_user_fav(user_id,stock_id)
 
-        print(stock_id, user_id, '###########line 202#########')
+       
 
         return jsonify(result=True) if userfav else jsonify(result=False) 
 
-    # # stock_id = request.values['stock_id']
-    # print(session)
-    # user_id= session["user"]
+
     else:
         check = UserFavorite.query.filter_by(user_id=user_id, stock_id=stock_id).first() 
         
@@ -229,7 +236,7 @@ def set_favorites(stock_id):
         else:
             crud.delete_stock_user(user_id, stock_id)
         
-        print(stock_id, user_id, '###########line 216#########')
+       
     
         return redirect('/stocks?symbol=')
 
@@ -243,19 +250,6 @@ def delete_stock_json():
         crud.delete_stock_user(user_id, stock_id)
 
     return redirect('/stocks?symbol=')
-
-
-
-# @app.route('/stocks/<stock_id>', method=['POST'])
-# def show_favorite_info():
-#     if "user" in session: 
-#         user_id = session['user']
-
-#         stock_id=request.form.get("stock_id")
-
-
-#     return redirect('/stocks')
-
 
 
 
