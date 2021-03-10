@@ -24,7 +24,7 @@ input[type=range]::-webkit-slider-runnable-track {
 body {font-family:  D-din Exp,GT America,"system-ui",BlinkMacSystemFont,-apple-system,Segoe UI,Helvetica Neue,Helvetica,sans-serif;
   background-color: #32323e;
   color:white;
-  margin: 20px;
+  margin: 40px;
  
   
   
@@ -195,8 +195,8 @@ span.psw {
 
 .right_menu {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 40px;
+  top: 40px;
   font-size: large;
 }
 
@@ -210,7 +210,7 @@ span.psw {
   float:right;
   width:40%;
   color:rgb(255, 99, 132);
-  border:2px solid gray;
+  border:2px solid #252e30;
   
 
 }
@@ -243,9 +243,45 @@ option {
 
 
 }
+/* card  */
+
+.card {
+  margin-bottom: 10px;
+  border: 0px;
+  background-color: #252e30;
+  padding: 10px;
+}
+
 
 .card-img-top{
   width: 150px;
+  height:200px;
+  background-color:#252e30;
+  margin-left:auto ;
+  margin-right: auto; 
 
 
 }
+
+.card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  background-color:#252e30;
+  text-align: center;
+ 
+}
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+/* Grid  */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  flex-flow:column wrap ;
+}
+
