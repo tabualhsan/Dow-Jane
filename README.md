@@ -1,3 +1,4 @@
+
 # Dow-Jane
 Dow Jane is an educational platform to empower women to be informed about stock investments, and to make better informed investing decisions.
 
@@ -11,4 +12,6 @@ __Database:__ PostgreSQL\
 __API:__ NPPES Alpha Vantage
 
 
+
+file:///C:/Users/tabua/src/stock-app/static/img/logo.webp
 
