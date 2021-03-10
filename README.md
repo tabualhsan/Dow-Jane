@@ -13,5 +13,5 @@ __API:__ NPPES Alpha Vantage
 
 
 
-file:///C:/Users/tabua/src/stock-app/static/img/logo.webp
+![image](https://user-images.githubusercontent.com/75860043/110556568-a9da5b00-80f3-11eb-8592-50183409d91f.png)
 
