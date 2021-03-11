@@ -106,7 +106,7 @@ function favorite(evt){
         $("#user_favorites").html("");
         for (var i = 0; i < favs_length; i++) {
             // console.log(favs[i]);
-            $("#user_favorites").append("<ul><a href ='/stocks?symbol="+favs[i][2]+"'>"+favs[i][1]+"</a></ul>");
+            $("#user_favorites").append("<span><a href ='/stocks?symbol="+favs[i][2]+"'>"+favs[i][1]+"</a></span>");
     
         };
         

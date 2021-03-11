@@ -3,17 +3,20 @@
 {% block title %}Welcome to Dow Jane{% endblock %}     
 
 {% block body %}
-<h2> Login Page</h2>
-<head>
+  <div class="left_panel"></div>
 
-    <link rel="stylesheet" href="/static/style.css">
+
+  <div class="right_panel">
+      <h2><img class="logo" href="/stocks" src="static/img/logo.webp"> WELCOME TO DOW JANE</a></h2>
+
+      <h3>Login</h3>
 
 
        <form id="login" action="/login" method="post">
 
-        <label>Email : </label> 
+        <label>Email</label> 
         <input type="text" placeholder="Enter Email" name="email" required>
-        <label>Password : </label> 
+        <label>Password</label> 
         <input type="password" placeholder="Enter Password" name="password" required>
          <button id ="login_button" type="submit">Login</button> 
       </form>
@@ -42,11 +45,9 @@
 
         </form>
     </div>
-
+  </div>
     
-   
-       <script src="/static/stocks.js"></script>
-     {% endblock %}
+        {% endblock %}
 
     
 
