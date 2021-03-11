@@ -15,7 +15,7 @@ __API:__ Alpha Vantage
 
 ![image](https://user-images.githubusercontent.com/75860043/110556568-a9da5b00-80f3-11eb-8592-50183409d91f.png)
 
-Installation
+**Installation**
 
 
 Requirements:
@@ -25,8 +25,8 @@ To have this app running on your local computer, please follow the below steps:
 
 Clone repository:
 
-$ git clone https://github.com/tabualhsan/Dow-Jane.git
-Create and activate a virtual environment:
+`$ git clone https://github.com/tabualhsan/Dow-Jane.git
+Create and activate a virtual environment:`
 
 $ pip3 install virtualenv
 $ virtualenv env
