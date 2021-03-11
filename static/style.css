@@ -46,6 +46,7 @@ body {font-family:  D-din Exp,GT America,"system-ui",BlinkMacSystemFont,-apple-s
   background-color: #1d2425;
   color:white;
   margin: 40px;
+  font-weight: lighter;
  
   
   
@@ -363,12 +364,13 @@ blockquote i {
 
 .box {
   background: var(--primary);
-  text-align: left;
+  text-align: center;
   padding: 1.5rem 2rem;
   box-shadow: var(--shadow);
   /* border:solid 1px gray; */
   /* background-color:#252e30; */
   height: relative;
+  font-weight: lighter;
 
 }
 
@@ -378,18 +380,19 @@ blockquote i {
 
 div.box {
   display: block;
+  font-weight: lighter;
 }
 
 .btn-info {
   color: #fff;
   background-color: #52e3c2;
-  border-color: #46b8da;
+  border-color:#52e3c2;
 }
 
 .btn-info:hover {
   color: #fff;
   background-color: #52e3c2;;
-  border-color: #269abc;
+  border-color: #52e3c2;;
 }
 
 /* side navigation  */
@@ -420,3 +423,4 @@ div.box {
 .main {
   margin-left: 200px; /* Same as the width of the sidenav */
 }
+

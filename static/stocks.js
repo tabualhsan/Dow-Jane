@@ -128,6 +128,7 @@ function updateInfo(results){
     $('#RevenueTTM').html(results.RevenueTTM);
     $('#FiscalYearEnd').html(results.FiscalYearEnd);
     $('#AssetType').html(results.AssetType);
+    $('#GrossProfitTTM').html(results.GrossProfitTTM);
     $('#DividendPerShare').html(results.DividendPerShare);
     $('#DividendYield').html(results.DividendYield);
     $('#DividendPerShare').html(results.DividendPerShare);
