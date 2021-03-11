@@ -40,7 +40,7 @@ Create database stocks:
 Create database tables:
 
 (env) $ python3 seed_database.py
->>> db.create_all()
+db.create_all()
 
 
 (env) $ python3 server.py
