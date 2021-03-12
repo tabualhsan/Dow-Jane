@@ -1,10 +1,9 @@
 
 # Dow-Jane
 
-===========
+
 For my capstone project for Hackbright Academy I create Dow Jane. Dow Jane is a single-page web application that is an educational platform to empower women to be informed about stock investments, and to make better informed investing decisions.
 
-Learn more about the developer: https://www.linkedin.com/in/tamara-abualhsan/
 
 
 ## Tech Stack
@@ -23,7 +22,8 @@ __API:__ Alpha Vantage
 Requirements:
 PostgreSQL\
 Python 3.7.3\
-To have this app running on your local computer, please follow the below steps:\
+
+To have Dow Jane running on your local computer, please follow the below steps:\
 
 Clone repository:
 
@@ -49,3 +49,8 @@ db.create_all()\
 
 (env) $ python3 server.py\
 
+## <a name="developer"></a>About the Developer
+
+Clinical Research turned Software Engineer wanting to make a difference and change by creating applications and where science, healthcare and technology intersect. 
+
+Learn more about Tamara on her <a href=" https://www.linkedin.com/in/tamara-abualhsan/" target="_blank">LinkedIn.</a>
