@@ -51,6 +51,6 @@ db.create_all()\
 
 ## <a name="developer"></a>About the Developer
 
-Clinical Research turned Software Engineer wanting to make a difference and change by creating applications and where science, healthcare and technology intersect. 
+Clinical Researcher turned Software Engineer wanting to make a difference and change by creating applications and where science, healthcare and technology intersect. 
 
-Learn more about Tamara on her <a href=" https://www.linkedin.com/in/tamara-abualhsan/" target="_blank">LinkedIn.</a>
+Learn more about Tamara on her <a href="https://www.linkedin.com/in/tamara-abualhsan/" target="_blank">LinkedIn.</a>
