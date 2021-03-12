@@ -46,6 +46,8 @@ db.create_all()\
 
 (env) $ python3 server.py\
 
+## <a name="features"></a>Features
+
 ## <a name="developer"></a>About the Developer
 
 Clinical Researcher turned Software Engineer wanting to make a difference and change by creating applications and where science, healthcare and technology intersect. 
