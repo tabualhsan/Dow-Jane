@@ -1,7 +1,7 @@
 
 # Dow-Jane
 
-
+## <a name="overview"></a>Overview
 For my capstone project for Hackbright Academy I create Dow Jane. Dow Jane is a single-page web application that is an educational platform to empower women to be informed about stock investments, and to make better informed investing decisions.
 
 
