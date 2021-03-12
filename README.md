@@ -14,7 +14,7 @@ __Database:__ PostgreSQL\
 __API:__ Alpha Vantage
 
 
-<a name="Installation"></a>Overview
+## <a name="Installation"></a>Overview
 
 
 Requirements:
