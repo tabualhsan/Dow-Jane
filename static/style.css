@@ -259,10 +259,8 @@ option {
   display: table-cell;
 }
 #facts{
-
   border:2px solid gray;
- 
-
+  padding: 20px;
 
 }
 /* card  */

@@ -35,15 +35,15 @@ $ source env/bin/activate\
 
 Install dependencies:\
 
-(env) $ pip3 install -r requirements.txt\
+`(env) $ pip3 install -r requirements.txt
 
-Create database stocks:\
+Create database stocks:
 
-(env) $ createdb stocks\
-Create database tables:\
+(env) $ createdb stocks
+Create database tables:
 
-(env) $ python3 seed_database.py\
-db.create_all()\
+(env) $ python3 seed_database.py
+db.create_all()
 
 
 (env) $ python3 server.py\
