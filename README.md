@@ -29,11 +29,11 @@ Clone repository:
 `$ git clone https://github.com/tabualhsan/Dow-Jane.git
 Create and activate a virtual environment:`
 
-$ pip3 install virtualenv\
-$ virtualenv env\
-$ source env/bin/activate\
+`$ pip3 install virtualenv
+`$ virtualenv env
+`$ source env/bin/activate
 
-Install dependencies:\
+##Install dependencies:##
 
 `(env) $ pip3 install -r requirements.txt
 
@@ -42,11 +42,11 @@ Create database stocks:
 (env) $ createdb stocks
 Create database tables:
 
-(env) $ python3 seed_database.py
+`(env) $ python3 seed_database.py
 db.create_all()
 
 
-(env) $ python3 server.py\
+`(env) $ python3 server.py
 
 ## <a name="features"></a>Features
 
