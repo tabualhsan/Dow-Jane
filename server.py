@@ -1,16 +1,15 @@
 """Server for stock app."""
 
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-
-from model import connect_to_db, Stock, db, UserFavorite
 import crud
 import requests
 import json
 import collections
 import math
 from hashing import make_pw_hash, check_pw_hash
-		
+import os
 from jinja2 import StrictUndefined
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
@@ -19,6 +18,23 @@ app.jinja_env.undefined = StrictUndefined
 
 API_KEY = '3LOOI2SBODXLNS10'
 
+db = SQLAlchemy()
+
+DATABASE_URL = os.environ['DATABASE_URL']
+# Set this as an environment variable using: export DATABASE_URL='postgresql:///stocks' 
+
+def connect_to_db(flask_app, db_uri= DATABASE_URL):
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    db.app = flask_app
+    db.init_app(flask_app)
+   
+    print("connected to db!!!")
+
+
+
+from model import User, Stock, UserFavorite
 
 
 # ===========================Homepage================================================================================

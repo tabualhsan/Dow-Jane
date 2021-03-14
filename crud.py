@@ -1,7 +1,6 @@
 """CRUD"""
-
-
-from model import db, User, Stock, UserFavorite, connect_to_db
+from server import db, connect_to_db
+from model import User, Stock, UserFavorite
 import requests
 import csv
 
@@ -132,17 +131,4 @@ def get_user_fav(user_id,stock_id):
     userfav= UserFavorite.query.filter_by(user_id=user_id, stock_id=stock_id).one()
 
     return userfav
-
-
-
-
-
-
-if __name__ == '__main__':
-    from server import app
-    connect_to_db(app)
-
-
-
-
 

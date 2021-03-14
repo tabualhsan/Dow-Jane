@@ -1,9 +1,4 @@
-import os
-from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
-
+from server import db
 
 class User(db.Model):
     
@@ -63,18 +58,3 @@ class UserFavorite(db.Model):
 
     def __repr__(self):
         return f'<userFavorites favorite_id={self.favorite_id} is_favorite={self.is_favorite}>'
-
-
-DATABASE_URL = os.environ['DATABASE_URL']
-# Set this as an environment variable using: export DATABASE_URL='postgresql:///stocks' 
-
-
-def connect_to_db(flask_app, db_uri= DATABASE_URL):
-    flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-    db.app = flask_app
-    db.init_app(flask_app)
-   
-    print("connected to db!!!")
-
