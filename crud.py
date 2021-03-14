@@ -1,5 +1,5 @@
 """CRUD"""
-from server import db, connect_to_db, request
+from server import db, request, requests
 from model import User, Stock, UserFavorite
 
 import csv

@@ -121,7 +121,7 @@ def logout():
 @app.route("/OurMission")
 def OurMission():
 
-    user=session["user"]
+    # user= session["user"]
 
     return render_template('women.html')
 
