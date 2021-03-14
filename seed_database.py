@@ -1,7 +1,7 @@
 
 import os
 import crud
-from server import connect_to_db, db
+import server
 
 
 
