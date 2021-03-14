@@ -10,9 +10,6 @@ import collections
 import math
 from hashing import make_pw_hash, check_pw_hash
 		
-
-
-
 from jinja2 import StrictUndefined
 
 
@@ -21,7 +18,6 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
 API_KEY = '3LOOI2SBODXLNS10'
-
 
 
 
