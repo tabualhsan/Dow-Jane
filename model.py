@@ -77,6 +77,4 @@ def connect_to_db(flask_app, db_uri= DATABASE_URL):
     db.init_app(flask_app)
    
     print("connected to db!!!")
-if __name__ == '__main__':
-    from server import app
-    connect_to_db(app)
+

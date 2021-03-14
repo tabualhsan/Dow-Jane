@@ -26,12 +26,3 @@ model.db.create_all()
 
 all_stocks = crud.get_all_stocks()
 crud.save_stocks(all_stocks)
-
-# Create 10 users
-# for n in range(10):
-#     first_name = 'f_name'
-#     last_name ='l_name'
-#     email = f'user{n}@test.com'  
-#     password = 'test'
-
-#     user = crud.create_user(first_name, last_name, email, password)
