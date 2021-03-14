@@ -1,6 +1,6 @@
 """Server for stock app."""
 
-from flask import Flask, render_template, request, flash, session, redirect, jsonify
+from flask import Flask, render_template, request, flash, session, redirect, jsonify 
 import crud
 import requests
 import json
@@ -26,7 +26,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 def connect_to_db(flask_app, db_uri= DATABASE_URL):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+    
     db.app = flask_app
     db.init_app(flask_app)
    
