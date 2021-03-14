@@ -1,5 +1,6 @@
 from server import db
 
+
 class User(db.Model):
     
     """User """
