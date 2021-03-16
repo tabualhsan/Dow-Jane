@@ -1,9 +1,20 @@
 
 # Dow-Jane
 
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#over-view">Overview</a></li> 
+    <li><a href="#built-with">Tech Stack</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#about-the-developer">About the Developer</a></li>
+  </ol>
+</details>
+
 
 [logo]: https://user-images.githubusercontent.com/75860043/110556568-a9da5b00-80f3-11eb-8592-50183409d91f.png "Logo Title Text 2"
-
+![Dow-Jane](\img\logo.webp)
 ## <a name="overview"></a>Overview
 For my capstone project for Hackbright Academy I create Dow Jane. Dow Jane is a single-page web application that is an educational platform to empower women to be informed about stock investments, and to make better informed investing decisions.
 
@@ -35,18 +46,18 @@ Create and activate a virtual environment:`
 
 ##Install dependencies:##
 
-`(env) $ pip3 install -r requirements.txt
+(env) $ pip3 install -r requirements.txt
 
 Create database stocks:
 
 (env) $ createdb stocks
 Create database tables:
 
-`(env) $ python3 seed_database.py
+(env) $ python3 seed_database.py
 db.create_all()
 
 
-`(env) $ python3 server.py
+(env) $ python3 server.py
 
 ## <a name="features"></a>Features
 

@@ -29,13 +29,12 @@ def connect_to_db(flask_app, db_uri= DATABASE_URL):
 
     db.app = flask_app
     db.init_app(flask_app)
-   
+
     print("connected to db!!!")
 
 
 
 from model import User, Stock, UserFavorite
-
 
 # ===========================Homepage================================================================================
 @app.route('/')
@@ -121,7 +120,7 @@ def logout():
 @app.route("/OurMission")
 def OurMission():
 
-    # user= session["user"]
+    user= session["user"]
 
     return render_template('women.html')
 
