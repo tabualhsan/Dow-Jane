@@ -12,7 +12,7 @@
   </ol>
 </details>
 
-file:///C:/Users/tabua/src/stock-app/static/img/logo.webp
+![image logo] (file:///C:/Users/tabua/src/stock-app/static/img/logo.webp)
 
 
 ## <a name="overview"></a>Overview
