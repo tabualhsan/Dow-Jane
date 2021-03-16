@@ -79,7 +79,7 @@ Create database tables:
 
 ## <a name="features"></a>Features
 
-
+Markup:
 -Users can sign-up and log-in/
 -Users can search over 10,000 stocks that are S&P 500 by stock name/symbol or browse through all the stocks/ 
 -Users can see daily stock prices that are update by the minute/
