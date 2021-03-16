@@ -12,7 +12,7 @@
   </ol>
 </details>
 
-![image logo](file:///C:/Users/tabua/src/stock-app/static/img/logo.webp)
+![image logo](static/img/logo.webp)
 
 
 ## <a name="overview"></a>Overview
@@ -32,11 +32,11 @@ __API:__ Alpha Vantage
 
 
 ## <a name="Installation"></a>Installation
-
+```shell
 Requirements:
 PostgreSQL\
-Python 3.7.3\
-
+Python 3.7.3
+```
 
 To have Dow Jane running on your local computer, please follow the below steps:\
 
