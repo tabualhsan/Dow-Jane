@@ -24,6 +24,10 @@ Python 3.7.3\
 
 https://imgflip.com/gif/51vcyk
 
+![Create Set](https://imgflip.com/gif/51vcyk)
+<br/><br/><br/>
+
+
 To have Dow Jane running on your local computer, please follow the below steps:\
 
 Clone repository:
