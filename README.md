@@ -12,14 +12,14 @@
   </ol>
 </details>
 
+file:///C:/Users/tabua/src/stock-app/static/img/logo.webp
 
-[logo]: https://user-images.githubusercontent.com/75860043/110556568-a9da5b00-80f3-11eb-8592-50183409d91f.png "Logo Title Text 2"
-![Dow-Jane](\img\logo.webp)
+
 ## <a name="overview"></a>Overview
 
  The Dow Jane is inspired to educate and empower women to be informed about stocks, and to be able to make better informed investing decisions. Growing up as a woman I have always been told to save my money and to not invest it into the stock market because it's risky. I found I could take my financials farther than a savings account, as I quit my job and decided to shift my career as a software engineering student, I did not have a way that could generate an income, but having some knowledge about the stock market I felt I was not burning through my savings account. In general making financial decisions is hard and knowing how to is even harder. I hope Dow Jane helps answer any questions for a new or current investors in the stock market. I also hope it provides inspiration for all women to become leaders in business, and their lives. 
         
-I've devleoped Dow Jane as my solo capstone project for [Hackbright Academy](http://www.hackbrightacademy.com/) which is a full-stack software engineering fellowship for women. I began this journey with no experince in computer science and was excited to create my first coding project with the hopes to help others learn more about the stock market.
+I devleoped Dow Jane as my solo capstone project for [Hackbright Academy](http://www.hackbrightacademy.com/) which is a full-stack software engineering fellowship for women. I began this journey with no experince in computer science and was excited to create my first coding project with the hopes to help others learn more about the stock market.
 
 
 
@@ -43,7 +43,7 @@ To have Dow Jane running on your local computer, please follow the below steps:\
 1. __Clone repository:__
 ```shell
 
-`$ git clone https://github.com/tabualhsan/Dow-Jane.git
+$ git clone https://github.com/tabualhsan/Dow-Jane.git
 ```
 2. __Create and activate a virtual environment:__
 ```shell
@@ -64,7 +64,7 @@ $ source env/bin/activate
 
 ```
 
-__Create database stocks:__
+4. __Create database stocks:__
 ```shell
 
 (env) $ createdb stocks
