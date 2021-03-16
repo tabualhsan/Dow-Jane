@@ -22,7 +22,7 @@ Requirements:
 PostgreSQL\
 Python 3.7.3\
 
-![myImage]<div style="width:179px;max-width:100%;"><div style="height:0;padding-bottom:55.87%;position:relative;"><iframe width="179" height="100" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/51vb5l"></iframe></div><p><a href="https://imgflip.com/gif/51vb5l">via Imgflip</a></p></div>
+https://imgflip.com/gif/51vcyk
 
 To have Dow Jane running on your local computer, please follow the below steps:\
 
