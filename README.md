@@ -1,6 +1,8 @@
 
 # Dow-Jane
 
+![image logo](static/img/logo.webp)
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -12,7 +14,7 @@
   </ol>
 </details>
 
-![image logo](static/img/logo.webp)
+
 
 
 ## <a name="overview"></a>Overview
@@ -34,7 +36,7 @@ __API:__ Alpha Vantage
 ## <a name="Installation"></a>Installation
 ```shell
 Requirements:
-PostgreSQL\
+PostgreSQL
 Python 3.7.3
 ```
 
