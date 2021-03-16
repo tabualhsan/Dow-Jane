@@ -33,11 +33,6 @@ Requirements:
 PostgreSQL\
 Python 3.7.3\
 
-https://imgflip.com/gif/51vcyk
-
-![Create Set](https://imgflip.com/gif/51vcyk)
-<br/><br/><br/>
-
 
 To have Dow Jane running on your local computer, please follow the below steps:\
 
@@ -50,11 +45,18 @@ Create and activate a virtual environment:`
 `$ virtualenv env
 `$ source env/bin/activate
 
-##Install dependencies:##
+__Install dependencies:__
 
-(env) $ pip3 install -r requirements.txt
+`(env) $ pip3 install -r requirements.txt
 
-Create database stocks:
+Always be sure that you are inside your virtual environment (.env should be prepended to your terminal prompt)
+
+
+In order to reactivate it:
+
+source env/bin/activate
+
+__Create database stocks:__
 
 (env) $ createdb stocks
 Create database tables:
