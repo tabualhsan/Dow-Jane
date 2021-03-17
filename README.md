@@ -1,7 +1,9 @@
 
 # Dow-Jane
 
-![image logo](static/img/logo.webp=150x150)
+<img src="static/img/logo.webp" width="100" height="100">
+
+![show-case-gif](https://media.giphy.com/media/g4O7IGPPy0WPbJfu36/giphy.gif)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
