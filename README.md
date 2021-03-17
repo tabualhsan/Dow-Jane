@@ -81,7 +81,7 @@ Create database tables:
 
 <!-- + Create an account -->
 ### Login/Logout
-![login/logout](static\520a5u.gif)
+![login/logout](static\img\520a5u.gif)
 
 
 * Users can sign-up and log-in
