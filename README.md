@@ -1,7 +1,8 @@
 
-# Dow-Jane
+![image logo](static/img/logo_small.jpg)
+ # Dow-Jane
 
-![image logo](static/img/logo.webp)
+![show-case-gif](https://media.giphy.com/media/g4O7IGPPy0WPbJfu36/giphy.gif)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -79,29 +80,37 @@ Create database tables:
 
 ## <a name="features"></a>Features
 
-## Users can sign-up and log-in
+
 ![login-signup](https://media.giphy.com/media/d6WsMhmDG5s3UAxgFk/giphy.gif)
 
-## Users can search over 10,000 stocks that are S&P 500 by stock name/symbol or browse through all the stocks
 
 ![search-stocks](https://media.giphy.com/media/vTk92ReHfOpbkpQ1ED/giphy.gif)
 
-## Users can see daily stock prices that are update by the minute
+
 ![live_data](https://media.giphy.com/media/hxLtpe9pma61Ldnj8v/giphy.gif)
 
-## Users can see Stock price fluctuation through an interactive chart that shows 24 months of monthly price data
+
 ![duration](https://media.giphy.com/media/QdYADaaAwsVNyzQGli/giphy.gif)
 
-## Users can can add and remove stocks from their favorites list
+
 ![favorite](https://media.giphy.com/media/NJIA4PIGbrtd6huLdb/giphy.gif)
 
-## User can click on an educational modal to view the terms that are used in the stock market
+
 ![educational-modals](https://media.giphy.com/media/8fudAAbSJ3YbJijiwd/giphy.gif)
 
-## Users can learn more about individual women lead CEO categorized by their company
+
 ![women-lead-info](https://media.giphy.com/media/MFFSRvRxvk2m7MQ1QD/giphy.gif)
 
 
+* Users can sign-up and log-in
+* Users can search over 10,000 stocks that are S&P 500 by stock name/symbol or browse through all the stocks
+* Users can see daily stock prices that are update by the minute
+* Users can can add and remove stocks from their favorites list
+* User can view live current data about each company
+* User can click on an educational modal to view the terms that are used in the stock market
+* Users can see Stock price fluctuation through an interactive chart that shows 24 months of monthly price data
+* Users can view what stocks currently have a women lead CEO in the S&P 500
+* Users can learn more about individual women lead CEO categorized by their company
 
 ## <a name="developer"></a>About the Developer
 
