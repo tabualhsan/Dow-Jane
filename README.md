@@ -80,7 +80,7 @@ Create database tables:
 ## <a name="features"></a>Features
 
 
-![login](static\520a5u.gif)
+![login](static/img/520a5u.gif)
 
 
 * Users can sign-up and log-in
