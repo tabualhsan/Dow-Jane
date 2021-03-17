@@ -79,8 +79,9 @@ Create database tables:
 
 ## <a name="features"></a>Features
 
-
-![login](static/img/520a5u.gif)
+<!-- + Create an account -->
+### Login/Logout
+![login](/static/img/520a5u.gif)
 
 
 * Users can sign-up and log-in
