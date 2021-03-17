@@ -81,7 +81,7 @@ Create database tables:
 
 <!-- + Create an account -->
 ### Login/Logout
-![login/logout](static\login.gif)
+static\img\login.gif
 
 
 * Users can sign-up and log-in
