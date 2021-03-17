@@ -82,10 +82,14 @@ Create database tables:
 <!-- + Create an account -->
 ### Login/Logout
 <<<<<<< HEAD
+<<<<<<< HEAD
 ![logi(C:\Users\tabua\src\stock-app\static\Animated nGIF-downsized_large.gif)
 =======
 ![login](static/img/login.gif)
 >>>>>>> d2dfc72a4df3deed7fffe4dc15ccf98859c1d8ec
+=======
+![login](https://youtu.be/AzTJ11j8mGA)
+>>>>>>> 0c19a13bf0a14ed8835bcc0a4b8f50cd69eeedba
 
 
 * Users can sign-up and log-in
