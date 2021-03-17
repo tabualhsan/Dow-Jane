@@ -1,5 +1,5 @@
 
-![image_logo](static/logo_new.webp)
+![image_logo](static/logo_new.jpg)
  # Dow-Jane
 
 ![show-case-gif](https://media.giphy.com/media/g4O7IGPPy0WPbJfu36/giphy.gif)
