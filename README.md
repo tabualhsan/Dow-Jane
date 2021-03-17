@@ -28,7 +28,7 @@ I devleoped Dow Jane as my solo capstone project for [Hackbright Academy](http:/
 
 MVP 
 
-Users can select or browse through over 10,000 stocks and learn more about these stocks in the S&P 500 using the Alpha Vantage API. User can moniter stocks by adding them to their favorites. User can also see what stocks have a women-lead CEO and learn more about them. 
+Users can select or browse through over 10,000 stocks and learn more about these stocks in the market using the Alpha Vantage API. User can moniter stocks by adding them to their favorites. User can also see what stocks have a women-lead CEO and learn more about them. 
 
 
 
@@ -109,7 +109,7 @@ Create database tables:
 
 
 * Users can sign-up and log-in
-* Users can search over 10,000 stocks that are in the S&P 500 by stock name/symbol or browse through all the stocks
+* Users can search over 10,000 stocks that are in the stock market by stock name/symbol or browse through all the stocks
 * Users can see daily stock prices that are update by the minute
 * Users can can add and remove stocks from their favorites list
 * User can view live current data about each company
