@@ -81,16 +81,8 @@ Create database tables:
 
 <!-- + Create an account -->
 ### Login/Logout
-<<<<<<< HEAD
-<<<<<<< HEAD
-![logi(C:\Users\tabua\src\stock-app\static\Animated nGIF-downsized_large.gif)
-=======
-![login](static/img/login.gif)
->>>>>>> d2dfc72a4df3deed7fffe4dc15ccf98859c1d8ec
-=======
-![login](https://youtu.be/AzTJ11j8mGA)
->>>>>>> 0c19a13bf0a14ed8835bcc0a4b8f50cd69eeedba
 
+<iframe src="https://giphy.com/embed/d6WsMhmDG5s3UAxgFk" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/d6WsMhmDG5s3UAxgFk">via GIPHY</a></p>
 
 * Users can sign-up and log-in
 * Users can search over 10,000 stocks that are S&P 500 by stock name/symbol or browse through all the stocks
