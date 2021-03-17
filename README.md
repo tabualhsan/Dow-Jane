@@ -13,6 +13,7 @@
     <li><a href="#built-with">Tech Stack</a></li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#features">Features</a></li>
+    <li><a href="#Acknowledgments">Acknowledgments</a></li>
     <li><a href="#about-the-developer">About the Developer</a></li>
   </ol>
 </details>
@@ -26,7 +27,7 @@
         
 I devleoped Dow Jane as my solo capstone project for [Hackbright Academy](http://www.hackbrightacademy.com/) which is a full-stack software engineering fellowship for women. I began this journey with no experince in computer science and was excited to create my first coding project with the hopes to help others learn more about the stock market.
 
-MVP 
+## MVP 
 
 Users can select or browse through over 10,000 stocks and learn more about these stocks in the market using the Alpha Vantage API. User can moniter stocks by adding them to their favorites. User can also see what stocks have a women-lead CEO and learn more about them. 
 
@@ -117,6 +118,12 @@ Create database tables:
 * Users can see Stock price fluctuation through an interactive chart that shows 24 months of monthly price data
 * Users can view what stocks currently have a women lead CEO in the S&P 500
 * Users can learn more about individual women lead CEO's categorized by their company
+
+
+## <a name="Acknowledgments"></a>Acknowledgments
+
+I want to thank my family, my husband and everyone at Hackbright Academy from my instructors, advisors, mentors and fellow hackbright classmates for being with my on this journey. I have learned so much since last August 2020 when I decided to make the switch in my career to tech. It has given me more than becoming a software engineer, I have found myself through this career and excited to build a better tomorrow with it. 
+
 
 ## <a name="developer"></a>About the Developer
 
