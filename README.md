@@ -81,7 +81,7 @@ Create database tables:
 
 <!-- + Create an account -->
 ### Login/Logout
-![login-signup](static\img\login-signup.gif)
+![login-signup](https://media.giphy.com/media/d6WsMhmDG5s3UAxgFk/giphy.gif)
 
 * Users can sign-up and log-in
 * Users can search over 10,000 stocks that are S&P 500 by stock name/symbol or browse through all the stocks
