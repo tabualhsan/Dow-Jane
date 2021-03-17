@@ -82,6 +82,8 @@ Create database tables:
 
 (env) $ python3 seed_database.py
 
+(env) export DATABASE_URL='postgresql:///stocks' 
+
 (env) $ python3 server.py
 ```
 
