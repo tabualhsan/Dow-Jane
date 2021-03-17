@@ -12,6 +12,7 @@
     <li><a href="#over-view">Overview</a></li> 
     <li><a href="#built-with">Tech Stack</a></li>
     <li><a href="#installation">Installation</a></li>
+    <li><a href="#features">Features</a></li>
     <li><a href="#about-the-developer">About the Developer</a></li>
   </ol>
 </details>
