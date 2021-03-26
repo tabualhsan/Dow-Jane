@@ -203,7 +203,7 @@ duration = 12
 let symbol = getUrlParameter('symbol');
 
 var xmlhttp = new XMLHttpRequest(),
-    url = `http://localhost:5000/api/monthly?symbol=${symbol}`;
+    url = `/api/monthly?symbol=${symbol}`;
 
 xmlhttp.open('GET', url, true);
 xmlhttp.onload = function() {
