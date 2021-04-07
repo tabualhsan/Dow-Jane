@@ -10,14 +10,19 @@ from hashing import make_pw_hash, check_pw_hash
 import os
 from jinja2 import StrictUndefined
 from flask_sqlalchemy import SQLAlchemy
+from flask_thumbnails import Thumbnail
 
 
 app = Flask(__name__)
+thumb = Thumbnail(app)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
 API_KEY = '3LOOI2SBODXLNS10'
 
+
+app.config['THUMBNAIL_MEDIA_ROOT'] = '/static/img/logo.webp'
+app.config['THUMBNAIL_MEDIA_URL'] = '/logo.webp/'
 db = SQLAlchemy()
 
 DATABASE_URL = os.environ['DATABASE_URL']

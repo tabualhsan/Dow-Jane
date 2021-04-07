@@ -60,14 +60,14 @@ def get_all_stocks():
     """Get stock name info from AA API to store in db """
         
     url = 'https://www.alphavantage.co/query?function=LISTING_STATUS&apikey='+ API_KEY
-    res = requests.get(url)
+    res = requests.get(url) # double check this line, might be a duplicate to line 65
     params = dict(key=API_KEY, text='stocks', lang='en-es')
     res = requests.get(url, params=params)
     decoded = res.content.decode('utf-8')
 
     csv_read = csv.reader(decoded.splitlines(), delimiter=',')
     all_stocks = list(csv_read)
-
+    
     return all_stocks
 
 
@@ -78,6 +78,7 @@ def save_stocks(all_stocks):
 
     count = 0
     for stock in all_stocks:
+        print(stock)
         if count != 0:
             if stock[0] in women_lead:
                 stockInfo = Stock(symbol = stock[0], stock_name=stock[1], exchange=stock[2],asset_type=stock[3],status=[4], ipo_date=stock[5], delisting_date=stock[6], women_lead = True)
