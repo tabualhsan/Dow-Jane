@@ -133,3 +133,10 @@ def get_user_fav(user_id,stock_id):
 
     return userfav
 
+
+def test_function(nums):
+
+        first_num = nums[0] 
+
+        return first_num
+
